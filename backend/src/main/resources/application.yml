@@ -12,14 +12,23 @@ spring:
     password: ${POSTGRES_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
+  # Cada vez que arranca el back la base se crea desde cero:
+  # create-drop crea las tablas a partir de las entidades (y las borra al apagar),
+  # y luego se ejecuta src/main/resources/data.sql con los datos de prueba.
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
     open-in-view: false
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
 
   mail:
     host: ${MAIL_HOST:smtp-relay.brevo.com}
@@ -43,4 +52,3 @@ app:
   frontend-url: ${FRONTEND_URL:http://localhost:4200}
   mail:
     from: ${MAIL_FROM:no-reply@uqdelivery.co}
-  seed-password: ${SEED_PASSWORD:Clave123*}
