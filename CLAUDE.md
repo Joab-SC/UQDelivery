@@ -371,13 +371,15 @@ Todas las respuestas de error tienen la misma forma (`ApiError`):
 ### 4.10 Configuración (`application.yml`)
 
 Un solo archivo, **sin perfiles** (reemplaza el `application.properties` que generó Initializr).
-Cada valor sale de una variable de entorno con valor local por defecto: `${VARIABLE:valor_local}`.
-Variables: `PORT`, `DB_URL`, `DB_USER`, `DB_PASSWORD`, `DDL_AUTO` (update), `JWT_SECRET`, `JWT_EXP`
-(120 min), `CORS_ORIGINS`, `FRONTEND_URL`, `MAIL_HOST` (smtp-relay.brevo.com), `MAIL_PORT` (2525),
-`MAIL_USER`, `MAIL_PASSWORD` (clave SMTP de Brevo, no API key), `MAIL_FROM`, `SEED_PASSWORD`
-(contraseña de los usuarios iniciales; local `Clave123*`).
-Listadas sin valores en `backend/.env.example`. `spring.jpa.open-in-view: false`.
-**Nunca** subir credenciales reales.
+Las variables viven en **un solo `.env` en la raíz** (copia de `.env.example`), que leen `docker-compose.yml`
+y Spring (`spring.config.import: optional:file:../.env[.properties]`). En `application.yml` cada valor es
+`${VARIABLE:valor_local}`. Por ahora la configuración es solo para local; lo del despliegue se agrega
+cuando se despliegue.
+Variables: `POSTGRES_PORT`, `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`,
+`JWT_SECRET`, `JWT_EXP` (120 min), `CORS_ORIGINS`, `FRONTEND_URL`, `MAIL_HOST` (smtp-relay.brevo.com),
+`MAIL_PORT` (2525), `MAIL_USER`, `MAIL_PASSWORD` (clave SMTP de Brevo, no API key), `MAIL_FROM`,
+`SEED_PASSWORD` (contraseña de los usuarios iniciales; local `Clave123*`).
+`ddl-auto: update`, `open-in-view: false`. **Nunca** subir credenciales reales.
 
 ### 4.11 Pruebas
 
@@ -390,6 +392,7 @@ Listadas sin valores en `backend/.env.example`. `spring.jpa.open-in-view: false`
 ### 4.12 Comandos
 
 ```bash
+cp .env.example .env             # variables locales (una sola vez)
 docker compose up -d              # PostgreSQL local (desde la raíz)
 cd backend
 ./gradlew bootRun                 # arrancar (Windows: .\gradlew.bat bootRun)
