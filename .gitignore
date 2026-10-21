@@ -1,0 +1,57 @@
+# ============================================================
+# UQDelivery · reglas generales del monorepo
+# Las reglas propias de cada proyecto están en
+# backend/.gitignore y frontend/.gitignore
+# ============================================================
+
+### Variables de entorno y credenciales (NUNCA subirlas) ###
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+### IntelliJ IDEA (configuración personal de cada integrante) ###
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+### VS Code ###
+# Solo la carpeta de la raíz; frontend/.vscode tiene configuraciones
+# compartidas que sí se suben (ver frontend/.gitignore).
+/.vscode/
+.history/
+
+### Eclipse / STS / NetBeans ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+### Sistema operativo ###
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+### Logs y temporales ###
+*.log
+logs/
+*.tmp
+*.swp
+*~
+
+### Claude Code (configuración local de cada integrante) ###
+.claude/settings.local.json
