@@ -180,7 +180,7 @@ public UsuarioResponse cambiarRol(@PathVariable Long id, @Valid @RequestBody Cam
 El modelo completo (todos los sprints) está en `docs/modelo-datos/diagrama-clases.md`, como **diagrama de
 clases UML**: una imagen (`diagrama-clases.png`) para presentar y bloques Mermaid editables. Si el modelo
 cambia, se actualizan los dos. Tiene **11 entidades** (cada una es una tabla) y **10 enumeraciones**.
-El diagrama no muestra métodos por ahora: los métodos de dominio están en la sección 4.5.
+El diagrama no muestra métodos: solo atributos y relaciones.
 
 **Entidades:**
 
@@ -234,30 +234,27 @@ Las asociaciones van en un solo sentido (`@ManyToOne`): no hay listas de hijos e
 
 ### 4.5 Entidades del Sprint 1
 
-En HU-00 se crean solo estas:
+En HU-00 se crean solo estas, **con atributos, getters y constructores, sin métodos de dominio**. Cada
+historia agrega a la entidad los métodos que necesite, siguiendo la sección 4.3.
 
 - **`Usuario`** (`usuarios`): id, nombre, correo (único, minúsculas), contrasenaHash, telefono, rol, activo
   (siempre true por ahora), notificacionesActivas (true), fechaRegistro.
-  Métodos: `cambiarRol(Rol)`, `cambiarContrasena(String hash)`, `esAdmin()`.
-  El constructor de negocio siempre crea `EMISOR`.
-- **`TokenRecuperacion`** (`tokens_recuperacion`): id, usuario, token (UUID, único), fechaExpiracion
-  (creación + 30 min), usado, fechaCreacion. Métodos: `estaVigente()`, `marcarUsado()`.
+- **`TokenRecuperacion`** (`tokens_recuperacion`): id, usuario, token (UUID, único), fechaExpiracion,
+  usado, fechaCreacion.
 - **`ConfiguracionTarifa`** (`configuracion_tarifa`): **una sola fila (id = 1)**. tarifaBase, precioPorKm,
   precioPorKg, factorRuta (1.4), distanciaMinimaKm, pesoMaximoKg, medidaMaximaCm, actualizadoPor (null),
-  fechaActualizacion. Métodos: `distanciaEstimadaKm(Ciudad, Ciudad)`, `calcularCosto(km, peso)`,
-  `validarPaquete(peso, largo, ancho, alto)`.
+  fechaActualizacion.
 - **`Envio`** (`envios`): id, codigoSeguimiento (único), emisor, repartidor (null hasta HU-06),
   direccionOrigen, ciudadOrigen, direccionDestino, ciudadDestino, nombreDestinatario, telefonoDestinatario,
   correoDestinatario (opcional), descripcion, pesoKg, largoCm, anchoCm, altoCm, distanciaKm, costo, estado,
   fechaCreacion, fechaEntrega (null), fechaActualizacion.
-  Métodos: generación del código de seguimiento, `cancelar()` (base para HU-13).
 
 **Enums:**
 - `Rol`: `ADMIN`, `EMISOR`, `REPARTIDOR`
 - `EstadoEnvio`: `PENDIENTE`, `ASIGNADO`, `EN_CAMINO`, `ENTREGADO`, `CANCELADO`
   (no se cancela desde `EN_CAMINO` ni `ENTREGADO`)
 - `Ciudad`: `ARMENIA`, `PEREIRA`, `MANIZALES`, `CALARCA`, `MONTENEGRO`, cada una con nombre, latitud y
-  longitud, y método `distanciaLineaRectaKm(Ciudad)` (fórmula de Haversine). Verificar coordenadas.
+  longitud.
 
 ### 4.6 Reglas de negocio decididas
 
@@ -288,7 +285,7 @@ En HU-00 se crean solo estas:
 **HU-04 · Solicitud de envío**
 - Formulario con dirección exacta + **ciudad de una lista** para origen y destino, datos del destinatario
   (correo opcional), descripción, peso y dimensiones.
-- Valida el paquete con `ConfiguracionTarifa.validarPaquete(...)`.
+- Valida que el peso y las medidas no superen los límites de `configuracion_tarifa`.
 - **El back siempre recalcula el costo** con el servicio de cotización; nunca usa un costo enviado por el front.
 - Costo y distancia se guardan en el envío y **no se recalculan después** (si cambian las tarifas, los envíos
   viejos conservan su precio).

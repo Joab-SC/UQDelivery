@@ -10,8 +10,7 @@ GitHub, IntelliJ y VS Code (con la extensión *Markdown Preview Mermaid Support*
 automáticamente, y se pueden editar en vivo en <https://mermaid.live>. Si cambia el modelo, se actualizan
 los dos.
 
-Por ahora el diagrama **no muestra métodos**: los métodos de dominio de cada entidad están descritos en la
-sección 4.5 de `CLAUDE.md` y se agregarán aquí cuando estén implementados.
+El diagrama **no muestra métodos**: solo atributos y relaciones.
 
 ## Cómo leer el diagrama
 
@@ -477,4 +476,4 @@ asociaciones se guardan como llave foránea con sufijo `_id` (`emisor` → `emis
   longitud. Las coordenadas exactas del destino (`latitudDestino`, `longitudDestino`) llegan en el Sprint 3
   con la API de mapas.
 - **Dinero y medidas en `BigDecimal`** (columna `numeric`), nunca en `double`.
-- **Las entidades no tienen setters**: sus datos cambian solo a través de métodos de dominio.
+- **Las entidades no tienen setters**.
