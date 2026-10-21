@@ -382,8 +382,7 @@ Todas las respuestas de error tienen la misma forma (`ApiError`):
   `UsuarioAutenticado` (ya existe en `config/security/`) y llaman a `usuarioAutenticado.obtener()`.
 - `PasswordEncoder` = BCrypt.
 - **Datos de prueba en `data.sql`**: `admin@uqdelivery.co` (ADMIN), `emisor@uqdelivery.co` (EMISOR),
-  `repartidor@uqdelivery.co` (REPARTIDOR), `laura@uqdelivery.co` (EMISOR) y `carlos@uqdelivery.co`
-  (REPARTIDOR), todos con la contraseña `Clave123*` (en el archivo va su hash BCrypt); la fila de
+  `repartidor@uqdelivery.co` (REPARTIDOR) y `carlos@uqdelivery.co` (REPARTIDOR), todos con la contraseña `Clave123*` (en el archivo va su hash BCrypt); la fila de
   `configuracion_tarifa` (base 5000, 200/km, 1000/kg, factor 1.4, mínimo 5 km, máx. 50 kg y 150 cm) y un
   envío en cada estado. Quien agregue datos de prueba los agrega a `data.sql`.
 - **Antes de desplegar** hay que cambiar esto: el repo es público y `Clave123*` está escrita aquí, así que
