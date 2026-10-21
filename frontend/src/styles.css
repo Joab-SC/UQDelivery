@@ -1,1 +1,119 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+ * Estilos globales. Los estilos de cada pantalla van en su propio .css.
+ *
+ * Regla del equipo: NO escribir colores a mano (#ff0000, red...) en los .css de las pantallas.
+ * Usar siempre una variable:
+ *   - del tema de Material: var(--mat-sys-primary), var(--mat-sys-on-surface-variant), var(--mat-sys-error)...
+ *   - o de las de abajo (--uqd-...), que son las propias de UQDelivery.
+ * Así, si cambia la paleta, cambia toda la app sin tocar cada pantalla.
+ */
+
+:root {
+  /* Fondo general de las pantallas (las tarjetas son blancas encima) */
+  --uqd-fondo: #f3f6f8;
+
+  /* Menú lateral oscuro del panel */
+  --uqd-menu-fondo: #0f2a3d;
+  --uqd-menu-texto: #b9c7d2;
+  --uqd-menu-texto-hover: #ffffff;
+
+  /* Colores de los estados de un envío (fondo y texto de .chip-estado) */
+  --uqd-estado-pendiente-fondo: #faeeda;
+  --uqd-estado-pendiente-texto: #633806;
+  --uqd-estado-asignado-fondo: #e6f1fb;
+  --uqd-estado-asignado-texto: #0c447c;
+  --uqd-estado-en-camino-fondo: #ddf3f3;
+  --uqd-estado-en-camino-texto: #004f4f;
+  --uqd-estado-entregado-fondo: #eaf3de;
+  --uqd-estado-entregado-texto: #27500a;
+  --uqd-estado-cancelado-fondo: #fcebeb;
+  --uqd-estado-cancelado-texto: #791f1f;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ------------------------------------------------------------------
+ * Clases para las páginas. Úsalas para que todas se vean iguales:
+ *
+ *   <section class="pagina">
+ *     <header class="encabezado-pagina">
+ *       <h1 class="titulo-pagina">Usuarios</h1>
+ *       <p class="subtitulo-pagina">Cambia el rol de cualquier usuario.</p>
+ *     </header>
+ *     ...contenido (mat-card, mat-table, formularios)...
+ *   </section>
+ * ------------------------------------------------------------------ */
+
+.pagina {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Para formularios: más angosto */
+.pagina-angosta {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.encabezado-pagina {
+  margin-bottom: 24px;
+}
+
+.titulo-pagina {
+  margin: 0 0 4px;
+  font: var(--mat-sys-headline-small);
+  color: var(--mat-sys-on-surface);
+}
+
+.subtitulo-pagina {
+  margin: 0;
+  font: var(--mat-sys-body-large);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+/* ------------------------------------------------------------------
+ * Etiqueta de estado de un envío.
+ * Uso: <span class="chip-estado" [class]="'estado-' + envio.estado">{{ envio.estado }}</span>
+ * ------------------------------------------------------------------ */
+
+.chip-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font: var(--mat-sys-label-medium);
+  white-space: nowrap;
+}
+
+.estado-PENDIENTE {
+  background: var(--uqd-estado-pendiente-fondo);
+  color: var(--uqd-estado-pendiente-texto);
+}
+
+.estado-ASIGNADO {
+  background: var(--uqd-estado-asignado-fondo);
+  color: var(--uqd-estado-asignado-texto);
+}
+
+.estado-EN_CAMINO {
+  background: var(--uqd-estado-en-camino-fondo);
+  color: var(--uqd-estado-en-camino-texto);
+}
+
+.estado-ENTREGADO {
+  background: var(--uqd-estado-entregado-fondo);
+  color: var(--uqd-estado-entregado-texto);
+}
+
+.estado-CANCELADO {
+  background: var(--uqd-estado-cancelado-fondo);
+  color: var(--uqd-estado-cancelado-texto);
+}
