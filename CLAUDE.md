@@ -481,7 +481,8 @@ ng build
 - **Una historia por persona** (HU-00 a HU-05). Cada quien hace back, front, pruebas y documentación de su
   historia en **una sola rama**. Los entregables del sprint (sección 6.2) también se reparten.
 - Ramas: `feature/HU-0X-descripcion` desde `main`. **Todo va a `main` por Pull Request**, sin rama `develop`.
-- Commits: `feat(HU-01): formulario de login con validaciones`, `fix(HU-04): ...`, `chore(HU-00): ...`, `docs: ...`.
+- Commits con prefijo y sin la historia entre paréntesis: `feat: formulario de login con validaciones`,
+  `fix: ...`, `chore: ...`, `docs: ...`. La historia ya se ve en el nombre de la rama.
 - Hacer `git pull origin main` en la rama al menos una vez al día.
 - **Archivos con dueño** (pedir cambios al organizador): `build.gradle`, `package.json`, `app.config.ts`,
   `core/`, `config/security/`, `styles.css`. Nadie agrega dependencias sin avisar.
