@@ -1,0 +1,21 @@
+<mat-card class="tarjeta" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Iniciar sesión</mat-card-title>
+    <mat-card-subtitle>El formulario real llega con HU-01</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="aviso">
+      <mat-icon>science</mat-icon>
+      Modo desarrollo: elige un rol para simular una sesión.
+    </p>
+    <div class="botones">
+      @for (opcion of opciones; track opcion.rol) {
+        <button mat-flat-button (click)="entrarComo(opcion.rol)">
+          <mat-icon>{{ opcion.icono }}</mat-icon>
+          Entrar como {{ opcion.rol }}
+        </button>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

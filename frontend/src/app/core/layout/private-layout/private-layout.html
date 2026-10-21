@@ -1,0 +1,33 @@
+<app-navbar (alternarMenu)="alternarMenu()" />
+
+<mat-sidenav-container class="contenedor">
+  <mat-sidenav
+    class="menu"
+    [mode]="esMovil() ? 'over' : 'side'"
+    [opened]="menuAbierto()"
+    (openedChange)="menuAbierto.set($event)"
+  >
+    <p class="titulo-menu">Menú</p>
+    <mat-nav-list class="lista">
+      @for (opcion of opciones(); track opcion.ruta) {
+        <a
+          mat-list-item
+          class="opcion"
+          [routerLink]="opcion.ruta"
+          routerLinkActive
+          #activo="routerLinkActive"
+          [activated]="activo.isActive"
+          [class.activa]="activo.isActive"
+          (click)="alElegirOpcion()"
+        >
+          <mat-icon matListItemIcon>{{ opcion.icono }}</mat-icon>
+          <span matListItemTitle>{{ opcion.etiqueta }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="contenido">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

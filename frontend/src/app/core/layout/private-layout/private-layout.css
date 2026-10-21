@@ -1,0 +1,71 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.contenedor {
+  flex: 1;
+  --mat-sidenav-content-background-color: var(--uqd-fondo);
+}
+
+/*
+ * Menú lateral oscuro. Angular Material deja cambiar sus colores con variables --mat-...
+ * (sin tocar sus clases internas).
+ */
+.menu {
+  width: 248px;
+  border-right: none;
+  --mat-sidenav-container-background-color: var(--uqd-menu-fondo);
+  --mat-sidenav-container-text-color: var(--uqd-menu-texto);
+  --mat-sidenav-container-shape: 0;
+  --mat-sidenav-container-divider-color: transparent;
+
+  --mat-list-list-item-label-text-color: var(--uqd-menu-texto);
+  --mat-list-list-item-leading-icon-color: var(--uqd-menu-texto);
+  --mat-list-list-item-hover-label-text-color: var(--uqd-menu-texto-hover);
+  --mat-list-list-item-hover-leading-icon-color: var(--uqd-menu-texto-hover);
+  --mat-list-list-item-hover-state-layer-color: var(--uqd-menu-texto-hover);
+  --mat-list-list-item-focus-label-text-color: var(--uqd-menu-texto-hover);
+  --mat-list-list-item-focus-state-layer-color: var(--uqd-menu-texto-hover);
+
+  /* Opción activa: píldora del color principal */
+  --mat-list-active-indicator-color: var(--mat-sys-primary);
+  --mat-list-active-indicator-shape: 10px;
+}
+
+.titulo-menu {
+  margin: 20px 24px 8px;
+  font: var(--mat-sys-label-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uqd-menu-texto);
+}
+
+.lista {
+  padding: 0 12px;
+}
+
+.opcion {
+  margin-bottom: 4px;
+}
+
+/* Texto blanco sobre la píldora de la opción activa */
+.opcion.activa {
+  --mat-list-list-item-label-text-color: var(--mat-sys-on-primary);
+  --mat-list-list-item-leading-icon-color: var(--mat-sys-on-primary);
+  --mat-list-list-item-hover-label-text-color: var(--mat-sys-on-primary);
+  --mat-list-list-item-hover-leading-icon-color: var(--mat-sys-on-primary);
+  --mat-list-list-item-focus-label-text-color: var(--mat-sys-on-primary);
+  --mat-list-list-item-label-text-weight: 500;
+}
+
+.contenido {
+  padding: 32px;
+}
+
+@media (max-width: 768px) {
+  .contenido {
+    padding: 16px;
+  }
+}

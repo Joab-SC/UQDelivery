@@ -1,0 +1,22 @@
+/* El ancho y el título salen de las clases globales .pagina y .titulo-pagina (styles.css) */
+
+.tarjeta {
+  max-width: 480px;
+}
+
+.icono-tarjeta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.estado-ok {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  color: var(--mat-sys-primary);
+}

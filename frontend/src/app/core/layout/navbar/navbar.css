@@ -1,0 +1,52 @@
+.barra {
+  --mat-toolbar-container-background-color: var(--mat-sys-surface-container-lowest);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-surface);
+  gap: 8px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.espacio {
+  flex: 1;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 4px;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  font: var(--mat-sys-label-large);
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.nombre {
+  font: var(--mat-sys-label-large);
+}
+
+.rol {
+  font: var(--mat-sys-body-small);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+/* En celular solo se ve el círculo con las iniciales */
+@media (max-width: 600px) {
+  .datos {
+    display: none;
+  }
+}

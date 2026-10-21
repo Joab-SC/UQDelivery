@@ -54,4 +54,5 @@ logs/
 *~
 
 ### Claude Code (configuración local de cada integrante) ###
-.claude/settings.local.json
+# CLAUDE.md sí se sube: está en la raíz, no en esta carpeta.
+/.claude/

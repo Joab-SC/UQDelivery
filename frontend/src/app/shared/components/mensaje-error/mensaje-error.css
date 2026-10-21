@@ -1,0 +1,14 @@
+.mensaje-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+}
+
+/* Que el ícono no se aplaste cuando el mensaje es largo */
+.mensaje-error mat-icon {
+  flex-shrink: 0;
+}

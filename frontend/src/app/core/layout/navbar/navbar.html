@@ -1,0 +1,21 @@
+<mat-toolbar class="barra">
+  <button mat-icon-button aria-label="Abrir o cerrar el menú" (click)="alternarMenu.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-logo />
+
+  <span class="espacio"></span>
+
+  @if (auth.usuario(); as usuario) {
+    <div class="usuario">
+      <span class="avatar" aria-hidden="true">{{ iniciales() }}</span>
+      <span class="datos">
+        <span class="nombre">{{ usuario.nombre }}</span>
+        <span class="rol">{{ nombreRol() }}</span>
+      </span>
+    </div>
+  }
+  <button mat-icon-button aria-label="Cerrar sesión" title="Cerrar sesión" (click)="cerrarSesion()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
