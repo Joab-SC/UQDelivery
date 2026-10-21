@@ -12,13 +12,12 @@
 -- ============================================================
 
 -- ------------------------------------------------------------
--- Usuarios (uno por rol + un emisor y un repartidor extra)
+-- Usuarios (uno por rol + un repartidor extra)
 -- ------------------------------------------------------------
 INSERT INTO usuarios (nombre, correo, contrasena_hash, telefono, rol, activo, notificaciones_activas, fecha_registro) VALUES
   ('Administrador',        'admin@uqdelivery.co',       '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000001', 'ADMIN',      true, true, NOW() - INTERVAL '30 days'),
   ('Emisor de prueba',     'emisor@uqdelivery.co',      '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000002', 'EMISOR',     true, true, NOW() - INTERVAL '20 days'),
   ('Repartidor de prueba', 'repartidor@uqdelivery.co',  '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000003', 'REPARTIDOR', true, true, NOW() - INTERVAL '20 days'),
-  ('Laura Gómez',          'laura@uqdelivery.co',       '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3104567890', 'EMISOR',     true, true, NOW() - INTERVAL '10 days'),
   ('Carlos Ruiz',          'carlos@uqdelivery.co',      '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3209876543', 'REPARTIDOR', true, true, NOW() - INTERVAL '10 days');
 
 -- ------------------------------------------------------------
@@ -62,7 +61,7 @@ INSERT INTO envios (codigo_seguimiento, emisor_id, repartidor_id,
    NOW() - INTERVAL '2 days', NULL, NOW() - INTERVAL '3 hours'),
 
   ('UQD-P2XEV5KM',
-   (SELECT id FROM usuarios WHERE correo = 'laura@uqdelivery.co'),
+   (SELECT id FROM usuarios WHERE correo = 'emisor@uqdelivery.co'),
    (SELECT id FROM usuarios WHERE correo = 'repartidor@uqdelivery.co'),
    'Calle 40 # 25-10', 'CALARCA', 'Carrera 5 # 12-30', 'MONTENEGRO',
    'Sofía Vargas', '3164445566', NULL, 'Libro de regalo envuelto',
@@ -70,7 +69,7 @@ INSERT INTO envios (codigo_seguimiento, emisor_id, repartidor_id,
    NOW() - INTERVAL '5 days', NOW() - INTERVAL '4 days', NOW() - INTERVAL '4 days'),
 
   ('UQD-R9FC7TQH',
-   (SELECT id FROM usuarios WHERE correo = 'laura@uqdelivery.co'), NULL,
+   (SELECT id FROM usuarios WHERE correo = 'emisor@uqdelivery.co'), NULL,
    'Carrera 19 # 10N-15', 'ARMENIA', 'Avenida Santander # 60-15', 'MANIZALES',
    'Pedro Castaño', '3185556677', 'pedro.castano@correo.co', 'Monitor de 24 pulgadas',
    15, 70, 50, 20, 87.07, 37400, 'CANCELADO',

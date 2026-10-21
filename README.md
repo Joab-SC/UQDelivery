@@ -61,7 +61,6 @@ Usuarios de prueba, todos con la contraseña `Clave123*`:
 | `admin@uqdelivery.co` | ADMIN |
 | `emisor@uqdelivery.co` | EMISOR |
 | `repartidor@uqdelivery.co` | REPARTIDOR |
-| `laura@uqdelivery.co` | EMISOR |
 | `carlos@uqdelivery.co` | REPARTIDOR |
 
 También trae la configuración de tarifas y un envío en cada estado.
