@@ -1,0 +1,29 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+}
+
+.icono mat-icon {
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.nombre {
+  font: var(--mat-sys-title-large);
+  font-weight: 500;
+  /* Sobre un fondo oscuro, el padre puede poner --uqd-logo-texto: white */
+  color: var(--uqd-logo-texto, var(--mat-sys-on-surface));
+}

@@ -1,0 +1,7 @@
+.cargando {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  color: var(--mat-sys-on-surface-variant);
+}
