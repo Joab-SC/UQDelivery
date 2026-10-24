@@ -1,0 +1,31 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-icon matCardAvatar class="icono-tarjeta">request_quote</mat-icon>
+    <mat-card-title>Cotización</mat-card-title>
+    <mat-card-subtitle>Costo y distancia estimada del envío</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (cargando()) {
+      <app-cargando texto="Calculando cotización..." />
+    } @else if (cotizacion()) {
+      <p class="costo">{{ costoTexto() }}</p>
+      <p class="distancia">Distancia estimada: {{ distanciaTexto() }}</p>
+    } @else if (!error()) {
+      <p class="ayuda">Completa los datos del paquete y pulsa «Cotizar» para ver el costo.</p>
+    }
+    <app-mensaje-error [mensaje]="error()" />
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-flat-button
+      type="button"
+      [disabled]="deshabilitado() || cargando()"
+      (click)="cotizar.emit()"
+    >
+      <mat-icon>calculate</mat-icon>
+      Cotizar
+    </button>
+  </mat-card-actions>
+</mat-card>
