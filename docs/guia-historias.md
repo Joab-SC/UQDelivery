@@ -96,7 +96,7 @@ Las líneas de `app.routes.ts` ya preparadas se ven así; al descomentarlas se c
 import { roleGuard } from './core/auth/role.guard';
 // ...
 { path: 'usuarios', canActivate: [roleGuard('ADMIN')],
-  loadChildren: () => import('./features/usuarios/usuarios.routes').then((m) => m.USUARIOS_ROUTES) },
+        loadChildren: () => import('./features/usuarios/usuarios.routes').then((m) => m.USUARIOS_ROUTES) },
 ```
 
 ### Dependencias entre historias
@@ -272,11 +272,65 @@ Puntos delicados:
 
 | Archivo | Contenido |
 |---|---|
-| `components/resumen-cotizacion/` | Botón "Cotizar" y el resultado (costo y distancia). Recibe los datos del paquete con `input()` y avisa el resultado con `output()`. |
-| `services/cotizacion.service.ts` | `cotizar(...)`. |
-| `models/cotizacion.models.ts` | `CotizacionRequest`, `CotizacionResponse`. |
+| `components/resumen-cotizacion/` | Tarjeta con el botón «Cotizar» y el resultado (costo en pesos y distancia). **No llama a la API**: recibe datos con `input()` y avisa con `output()`. Incluye su prueba `resumen-cotizacion.spec.ts`. |
+| `services/cotizacion.service.ts` | `cotizar(request)`: único que llama a `POST /api/envios/cotizacion`. Incluye `cotizacion.service.spec.ts`. |
+| `models/cotizacion.models.ts` | `CotizacionRequest`, `CotizacionResponse` y el tipo `CiudadCodigo` (propio de esta historia para no editar los modelos de HU-04). |
 
 No crea rutas ni páginas: su componente vive dentro del formulario de HU-04.
+
+**Cómo usa HU-04 el componente.** La página `nuevo-envio` es la que llama al servicio y guarda el resultado
+en signals; el componente solo lo muestra:
+
+| Nombre | Tipo | Qué hace |
+|---|---|---|
+| `cotizacion` | `input<CotizacionResponse \| null>` | Resultado de cotizar. `null` si aún no se cotizó. |
+| `cargando` | `input<boolean>` | `true` mientras se espera al back: muestra el indicador de carga y bloquea el botón. |
+| `error` | `input<string \| null>` | Mensaje del `ApiError` (p. ej. «El paquete no cumple con las políticas de tamaño»). |
+| `deshabilitado` | `input<boolean>` | Poner `true` mientras el formulario del paquete sea inválido. |
+| `cotizar` | `output<void>` | Se emite cuando el usuario pulsa «Cotizar». |
+
+En la página de HU-04:
+
+```ts
+protected readonly cotizacion = signal<CotizacionResponse | null>(null);
+protected readonly cotizando = signal(false);
+protected readonly errorCotizacion = signal<string | null>(null);
+
+cotizar(): void {
+  this.cotizando.set(true);
+  this.errorCotizacion.set(null);
+  this.cotizacionService.cotizar(this.formulario.getRawValue()).subscribe({
+    next: (respuesta) => {
+      this.cotizacion.set(respuesta);
+      this.cotizando.set(false);
+    },
+    error: (err) => {
+      this.errorCotizacion.set(err.error?.message ?? 'No se pudo cotizar el envío');
+      this.cotizando.set(false);
+    },
+  });
+}
+```
+
+```html
+<app-resumen-cotizacion
+        [cotizacion]="cotizacion()"
+        [cargando]="cotizando()"
+        [error]="errorCotizacion()"
+        [deshabilitado]="formulario.invalid"
+        (cotizar)="cotizar()"
+/>
+```
+
+Puntos delicados del front:
+- **Borrar la cotización al cambiar el formulario.** Si el usuario cambia peso, medidas o ciudades después de
+  cotizar, la página de HU-04 pone `cotizacion` en `null` para obligarlo a cotizar de nuevo (`CLAUDE.md` 4.6).
+- **Lo que muestra la tarjeta es informativo.** El back siempre recalcula el costo al crear el envío
+  (`POST /api/envios`); nunca se envía el costo del front.
+- **Formato de moneda con `Intl.NumberFormat('es-CO')`**, así no hace falta registrar el idioma en
+  `app.config.ts` (archivo compartido).
+- **Probar con el back real:** el token del login de desarrollo es falso y el back responde 401. La prueba de
+  punta a punta necesita el login real de HU-01.
 
 ---
 

@@ -74,4 +74,12 @@ public class ConfiguracionTarifa {
     void alGuardar() {
         this.fechaActualizacion = LocalDateTime.now();
     }
+
+    /** Indica si el peso y cada medida del paquete están dentro de los límites permitidos. */
+    public boolean admitePaquete(BigDecimal pesoKg, BigDecimal largoCm, BigDecimal anchoCm, BigDecimal altoCm) {
+        return pesoKg.compareTo(pesoMaximoKg) <= 0
+                && largoCm.compareTo(medidaMaximaCm) <= 0
+                && anchoCm.compareTo(medidaMaximaCm) <= 0
+                && altoCm.compareTo(medidaMaximaCm) <= 0;
+    }
 }

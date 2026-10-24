@@ -92,6 +92,32 @@ Comprueba que la API responde. **Público.**
 
 ---
 
+### HU-05 · `POST /api/envios/cotizacion`
+
+Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:** EMISOR.
+
+**Request** (`CotizacionRequest`)
+
+   ```json
+   { "ciudadOrigen": "ARMENIA", "ciudadDestino": "PEREIRA",
+     "pesoKg": 2.5, "largoCm": 35, "anchoCm": 25, "altoCm": 5 }
+   ```
+
+**Response 200** (`CotizacionResponse`)
+
+   ```json
+   { "costo": 16200, "distanciaKm": 43.56 }
+   ```
+
+**Errores**
+
+| Código | Cuándo | message |
+   |---|---|---|
+| 400 | Campos nulos o ≤ 0, ciudad inexistente | "Hay campos inválidos" / "El cuerpo de la petición no es válido" |
+| 400 | Fuera de límites de peso o medidas | "El paquete no cumple con las políticas de tamaño" |
+| 401 | Sin token | "Debes iniciar sesión para continuar" |
+| 403 | Rol distinto de EMISOR | "No tienes permiso para realizar esta acción" |
+
 <!--
 Plantilla para cada endpoint nuevo (copiar y llenar):
 

@@ -1,0 +1,24 @@
+.icono-tarjeta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.costo {
+  margin: 16px 0 4px;
+  font: var(--mat-sys-display-small);
+  color: var(--mat-sys-primary);
+}
+
+.distancia,
+.ayuda {
+  margin: 0;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.ayuda {
+  padding: 16px 0 0;
+}
