@@ -92,6 +92,20 @@ Comprueba que la API responde. **Público.**
 
 ---
 
+### POST /api/envios/cotizacion  (EMISOR · HU-05)
+
+Request:
+{ "ciudadOrigen": "ARMENIA", "ciudadDestino": "PEREIRA",
+"pesoKg": 2.5, "largoCm": 35, "anchoCm": 25, "altoCm": 5 }
+
+Response 200:
+{ "costo": 16200, "distanciaKm": 43.56 }
+
+Errores:
+- 400 "Hay campos inválidos" (campos nulos o <= 0, ciudad inexistente)
+- 400 "El paquete no cumple con las políticas de tamaño"
+- 401 sin token · 403 si el rol no es EMISOR
+
 <!--
 Plantilla para cada endpoint nuevo (copiar y llenar):
 
