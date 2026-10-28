@@ -18,8 +18,6 @@ public class UsuarioMapper {
                 usuario.getCorreo(),
                 usuario.getTelefono(),
                 usuario.getRol(),
-                usuario.isActivo(),
-                usuario.isNotificacionesActivas(),
                 usuario.getFechaRegistro()
         );
     }

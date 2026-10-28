@@ -9,7 +9,5 @@ public record UsuarioResponse(
         String correo,
         String telefono,
         Rol rol,
-        Boolean activo,
-        Boolean notificacionesActivas,
         LocalDateTime fechaRegistro
 ) {}
