@@ -118,6 +118,108 @@ Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:**
 | 401 | Sin token | "Debes iniciar sesión para continuar" |
 | 403 | Rol distinto de EMISOR | "No tienes permiso para realizar esta acción" |
 
+---
+
+### HU-04 · `GET /api/ciudades`
+
+Lista de ciudades donde opera UQDelivery, para los selectores de origen y destino. **Rol:** Autenticado.
+
+**Response 200** (`CiudadResponse[]`)
+
+```json
+[
+  { "codigo": "ARMENIA", "nombre": "Armenia" },
+  { "codigo": "PEREIRA", "nombre": "Pereira" },
+  { "codigo": "MANIZALES", "nombre": "Manizales" },
+  { "codigo": "CALARCA", "nombre": "Calarcá" },
+  { "codigo": "MONTENEGRO", "nombre": "Montenegro" }
+]
+```
+
+`codigo` es el valor que se envía en `ciudadOrigen` / `ciudadDestino`; `nombre` es el que se muestra.
+
+**Errores:** 401 sin token.
+
+---
+
+### HU-04 · `GET /api/configuracion/politicas`
+
+Límites del paquete para validar el formulario en el front. Salen de la tabla `configuracion_tarifa`.
+**Rol:** Autenticado.
+
+**Response 200** (`PoliticasResponse`)
+
+```json
+{ "pesoMaximoKg": 50, "medidaMaximaCm": 150 }
+```
+
+`medidaMaximaCm` es el máximo para cada medida (largo, ancho y alto).
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 401 | Sin token | "Debes iniciar sesión para continuar" |
+| 404 | No existe la fila de configuración | "No hay configuración de tarifas" |
+
+---
+
+### HU-04 · `POST /api/envios`
+
+Crea una solicitud de envío. El emisor sale del token, el back **recalcula siempre el costo** con la cotización
+de HU-05 (no se envía costo), el envío nace en `PENDIENTE` y se devuelve su código de seguimiento.
+**Rol:** EMISOR.
+
+**Request** (`EnvioRequest`)
+
+```json
+{
+  "direccionOrigen": "Carrera 14 # 20-35", "ciudadOrigen": "ARMENIA",
+  "direccionDestino": "Calle 19 # 8-40", "ciudadDestino": "PEREIRA",
+  "nombreDestinatario": "Andrés López", "telefonoDestinatario": "3151112233",
+  "correoDestinatario": "andres.lopez@correo.co",
+  "descripcion": "Documentos en sobre de manila",
+  "pesoKg": 2.5, "largoCm": 35, "anchoCm": 25, "altoCm": 5
+}
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| direccionOrigen, direccionDestino | string | Obligatorio, máx. 200 caracteres |
+| ciudadOrigen, ciudadDestino | string | Obligatorio, un `codigo` de `GET /api/ciudades` |
+| nombreDestinatario | string | Obligatorio, máx. 100 caracteres |
+| telefonoDestinatario | string | Obligatorio, de 7 a 15 dígitos |
+| correoDestinatario | string | **Opcional**, correo válido, máx. 150 caracteres |
+| descripcion | string | Obligatorio, máx. 500 caracteres |
+| pesoKg, largoCm, anchoCm, altoCm | number | Obligatorio, mayor a 0, máx. 2 decimales, sin superar las políticas |
+
+**Response 201** (`EnvioResponse`)
+
+```json
+{
+  "id": 6, "codigoSeguimiento": "UQD-7KQ2M9XA",
+  "direccionOrigen": "Carrera 14 # 20-35", "ciudadOrigen": "ARMENIA",
+  "direccionDestino": "Calle 19 # 8-40", "ciudadDestino": "PEREIRA",
+  "nombreDestinatario": "Andrés López", "telefonoDestinatario": "3151112233",
+  "correoDestinatario": "andres.lopez@correo.co", "descripcion": "Documentos en sobre de manila",
+  "pesoKg": 2.5, "largoCm": 35, "anchoCm": 25, "altoCm": 5,
+  "distanciaKm": 43.56, "costo": 16200, "estado": "PENDIENTE",
+  "fechaCreacion": "2026-10-29T10:30:00"
+}
+```
+
+Código de seguimiento: `UQD-` + 8 caracteres en mayúscula, sin O, 0, I ni 1.
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Campos vacíos o inválidos | "Hay campos inválidos" + `errors` por campo |
+| 400 | Ciudad inexistente o JSON mal formado | "El cuerpo de la petición no es válido" |
+| 400 | Fuera de límites de peso o medidas | "El paquete no cumple con las políticas de tamaño" |
+| 401 | Sin token | "Debes iniciar sesión para continuar" |
+| 403 | Rol distinto de EMISOR | "No tienes permiso para realizar esta acción" |
+
 <!--
 Plantilla para cada endpoint nuevo (copiar y llenar):
 
