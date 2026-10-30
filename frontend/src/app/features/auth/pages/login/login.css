@@ -15,3 +15,14 @@
 .formulario button {
   margin-top: 8px;
 }
+
+.pie {
+  margin: 16px 0 0;
+  text-align: center;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.pie a {
+  color: var(--mat-sys-primary);
+}
