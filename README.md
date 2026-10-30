@@ -73,8 +73,8 @@ npm install
 ng serve
 ```
 
-Abrir <http://localhost:4200>. Mientras HU-01 no termine el login real, la pantalla de login tiene botones
-"Entrar como ADMIN / EMISOR / REPARTIDOR" para simular una sesión.
+Abrir <http://localhost:4200> e iniciar sesión con uno de los usuarios de prueba (el back tiene que estar
+encendido).
 
 ## Pruebas
 

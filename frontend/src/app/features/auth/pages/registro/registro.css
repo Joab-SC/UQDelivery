@@ -1,0 +1,35 @@
+.tarjeta {
+  width: 100%;
+  max-width: 440px;
+  padding: 8px;
+}
+
+/* Casillas una debajo de otra */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.formulario button {
+  margin-top: 8px;
+}
+
+/* Error de "las contraseñas no coinciden", con el mismo aspecto que un mat-error */
+.error-grupo {
+  margin: -4px 16px 8px;
+  font: var(--mat-sys-body-small);
+  color: var(--mat-sys-error);
+}
+
+.pie {
+  margin: 16px 0 0;
+  text-align: center;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.pie a {
+  color: var(--mat-sys-primary);
+}

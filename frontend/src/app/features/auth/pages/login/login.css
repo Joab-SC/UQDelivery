@@ -4,19 +4,25 @@
   padding: 8px;
 }
 
-.aviso {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 16px 0;
-  padding: 12px;
-  border-radius: 8px;
-  background: var(--mat-sys-secondary-container);
-  color: var(--mat-sys-on-secondary-container);
-}
-
-.botones {
+/* Casillas una debajo de otra */
+.formulario {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.formulario button {
+  margin-top: 8px;
+}
+
+.pie {
+  margin: 16px 0 0;
+  text-align: center;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.pie a {
+  color: var(--mat-sys-primary);
 }
