@@ -6,3 +6,12 @@ export interface LoginRequest {
   correo: string;
   contrasena: string;
 }
+
+// Lo que se envía a POST /api/auth/registro (responde UsuarioResponse, sin token)
+export interface RegistroRequest {
+  nombre: string;
+  correo: string;
+  telefono: string;
+  contrasena: string;
+  confirmarContrasena: string;
+}
