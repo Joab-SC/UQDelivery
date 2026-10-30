@@ -305,3 +305,79 @@ Qué hace. **Rol:** ADMIN | EMISOR | REPARTIDOR | Autenticado | Público.
 |---|---|---|
 | 400 | ... | ... |
 -->
+
+---
+
+## HU-02 · Gestión de perfiles y roles
+
+Solo el rol `ADMIN` puede usar estos endpoints. Reutilizan `UsuarioResponse` (ver "Modelos compartidos").
+
+### 1. Listar usuarios · `GET /api/usuarios`
+
+Devuelve todos los usuarios ordenados por nombre (sin paginación en este sprint). **Rol:** ADMIN.
+
+**Response 200** (`UsuarioResponse[]`)
+
+```json
+[
+  {
+    "id": 1,
+    "nombre": "Administrador",
+    "correo": "admin@uqdelivery.co",
+    "telefono": "3000000001",
+    "rol": "ADMIN",
+    "fechaRegistro": "2026-10-21T10:30:00"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Ruiz",
+    "correo": "carlos@uqdelivery.co",
+    "telefono": "3209876543",
+    "rol": "REPARTIDOR",
+    "fechaRegistro": "2026-10-21T10:30:00"
+  }
+]
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 401 | Sin token, inválido o vencido | "Debes iniciar sesión para continuar" |
+| 403 | Rol distinto de ADMIN | "No tienes permiso para realizar esta acción" |
+
+### 2. Cambiar el rol de un usuario · `PATCH /api/usuarios/{id}/rol`
+
+Cambia el rol de un usuario; sus permisos cambian desde su siguiente petición. **Rol:** ADMIN.
+
+**Request** (`CambiarRolRequest`)
+
+```json
+{ "rol": "REPARTIDOR" }
+```
+
+`rol` es obligatorio y debe ser `ADMIN`, `EMISOR` o `REPARTIDOR`.
+
+**Response 200** (`UsuarioResponse`) con el rol actualizado
+
+```json
+{
+  "id": 2,
+  "nombre": "Carlos Ruiz",
+  "correo": "carlos@uqdelivery.co",
+  "telefono": "3209876543",
+  "rol": "REPARTIDOR",
+  "fechaRegistro": "2026-10-21T10:30:00"
+}
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | `rol` ausente | "Hay campos inválidos" + `errors: { "rol": "El rol es obligatorio" }` |
+| 400 | `rol` con un valor que no existe | "El cuerpo de la petición no es válido" |
+| 400 | El admin intenta cambiar su propio rol | "No puedes cambiar tu propio rol" |
+| 401 | Sin token, inválido o vencido | "Debes iniciar sesión para continuar" |
+| 403 | Rol distinto de ADMIN | "No tienes permiso para realizar esta acción" |
+| 404 | El usuario no existe | "Usuario no encontrado" |
