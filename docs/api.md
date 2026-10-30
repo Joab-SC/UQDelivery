@@ -91,7 +91,63 @@ Comprueba que la API responde. **Público.**
 **Errores:** ninguno propio.
 
 ---
+## HU-01 · Registro e inicio de sesión seguro
 
+### 1. Registrar usuario
+* **Método:** `POST`
+* **Ruta:** `/api/auth/registro`
+* **Acceso:** Público
+* **Descripción:** Permite registrar un nuevo usuario en el sistema. Siempre asigna por defecto el rol de `EMISOR` y almacena el correo en minúsculas.
+
+**Request (`RegistroRequest`):**
+```json
+{
+  "nombre": "Juan Pérez",
+  "correo": "juan@uqdelivery.co",
+  "telefono": "3001234567",
+  "contrasena": "Clave123*",
+  "confirmarContrasena": "Clave123*"
+}
+```
+
+**Response 201**(`UsuarioResponse`)
+```json
+{
+"id": 1,
+"nombre": "Juan Pérez",
+"correo": "juan@uqdelivery.co",
+"telefono": "3001234567",
+"rol": "EMISOR",
+"fechaRegistro": "2026-10-27T22:30:00"
+}
+```
+## 2. Iniciar sesión
+* **Método:** `POST`
+* **Ruta:** `/api/auth/login`
+* **Acceso:** Público
+* **Descripción:** Autentica al usuario con sus credenciales y retorna un token JWT con una vigencia de 2 horas[cite: 1].
+
+**Request (`LoginRequest`):**
+```json
+{
+"correo": "juan@uqdelivery.co",
+"contrasena": "Clave123*"
+}
+```
+**Response 200(`LoginResponse`):**
+```json
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+"usuario": {
+"id": 1,
+"nombre": "Juan Pérez",
+"correo": "juan@uqdelivery.co",
+"telefono": "3001234567",
+"rol": "EMISOR",
+"fechaRegistro": "2026-10-27T22:30:00"
+}
+}
+```
 ### HU-05 · `POST /api/envios/cotizacion`
 
 Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:** EMISOR.
