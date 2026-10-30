@@ -91,63 +91,89 @@ Comprueba que la API responde. **Público.**
 **Errores:** ninguno propio.
 
 ---
-## HU-01 · Registro e inicio de sesión seguro
 
-### 1. Registrar usuario
-* **Método:** `POST`
-* **Ruta:** `/api/auth/registro`
-* **Acceso:** Público
-* **Descripción:** Permite registrar un nuevo usuario en el sistema. Siempre asigna por defecto el rol de `EMISOR` y almacena el correo en minúsculas.
+### HU-01 · `POST /api/auth/registro`
 
-**Request (`RegistroRequest`):**
+Crea una cuenta. **Siempre crea un `EMISOR`** (el request no tiene campo `rol`; los repartidores y admins se
+obtienen cambiando el rol, HU-02). El correo se guarda en minúsculas. No devuelve token: después de
+registrarse hay que iniciar sesión. **Público.**
+
+**Request** (`RegistroRequest`)
+
 ```json
 {
   "nombre": "Juan Pérez",
-  "correo": "juan@uqdelivery.co",
+  "correo": "juan@correo.co",
   "telefono": "3001234567",
-  "contrasena": "Clave123*",
-  "confirmarContrasena": "Clave123*"
+  "contrasena": "MiClave2026",
+  "confirmarContrasena": "MiClave2026"
 }
 ```
 
-**Response 201**(`UsuarioResponse`)
-```json
-{
-"id": 1,
-"nombre": "Juan Pérez",
-"correo": "juan@uqdelivery.co",
-"telefono": "3001234567",
-"rol": "EMISOR",
-"fechaRegistro": "2026-10-27T22:30:00"
-}
-```
-## 2. Iniciar sesión
-* **Método:** `POST`
-* **Ruta:** `/api/auth/login`
-* **Acceso:** Público
-* **Descripción:** Autentica al usuario con sus credenciales y retorna un token JWT con una vigencia de 2 horas[cite: 1].
+| Campo | Tipo | Reglas |
+|---|---|---|
+| nombre | string | Obligatorio, máx. 100 caracteres |
+| correo | string | Obligatorio, correo válido, máx. 100 caracteres, único (sin distinguir mayúsculas) |
+| telefono | string | Obligatorio, máx. 20 caracteres |
+| contrasena | string | Obligatorio, mínimo 8 caracteres, al menos una mayúscula, una minúscula y un número |
+| confirmarContrasena | string | Obligatorio, igual a `contrasena` |
 
-**Request (`LoginRequest`):**
+**Response 201** (`UsuarioResponse`)
+
 ```json
 {
-"correo": "juan@uqdelivery.co",
-"contrasena": "Clave123*"
+  "id": 5, "nombre": "Juan Pérez", "correo": "juan@correo.co", "telefono": "3001234567",
+  "rol": "EMISOR", "fechaRegistro": "2026-10-27T22:30:00"
 }
 ```
-**Response 200(`LoginResponse`):**
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Campos vacíos o inválidos | "Hay campos inválidos" + `errors` por campo |
+| 400 | La contraseña y su confirmación no coinciden | "Las contraseñas no coinciden" |
+| 409 | El correo ya tiene cuenta | "El correo ya se encuentra registrado" |
+
+---
+
+### HU-01 · `POST /api/auth/login`
+
+Comprueba correo y contraseña y devuelve un token JWT que dura **2 horas** (sin refresh token) junto con los
+datos del usuario. **Público.**
+
+**Request** (`LoginRequest`)
+
+```json
+{ "correo": "juan@correo.co", "contrasena": "MiClave2026" }
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| correo | string | Obligatorio, correo válido (no distingue mayúsculas) |
+| contrasena | string | Obligatorio |
+
+**Response 200** (`LoginResponse`)
+
 ```json
 {
-"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-"usuario": {
-"id": 1,
-"nombre": "Juan Pérez",
-"correo": "juan@uqdelivery.co",
-"telefono": "3001234567",
-"rol": "EMISOR",
-"fechaRegistro": "2026-10-27T22:30:00"
-}
+  "token": "eyJhbGciOiJIUzI1NiJ9...",
+  "usuario": {
+    "id": 5, "nombre": "Juan Pérez", "correo": "juan@correo.co", "telefono": "3001234567",
+    "rol": "EMISOR", "fechaRegistro": "2026-10-27T22:30:00"
+  }
 }
 ```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Campos vacíos o correo mal escrito | "Hay campos inválidos" + `errors` por campo |
+| 401 | El correo no existe o la contraseña no coincide (no se dice cuál) | "Correo o contraseña incorrectos" |
+
+---
+
 ### HU-05 · `POST /api/envios/cotizacion`
 
 Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:** EMISOR.

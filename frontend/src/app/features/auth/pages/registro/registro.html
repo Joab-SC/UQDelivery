@@ -1,0 +1,84 @@
+<mat-card class="tarjeta" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Crear cuenta</mat-card-title>
+    <mat-card-subtitle>Regístrate para solicitar tus envíos</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="formulario" [formGroup]="formulario" (ngSubmit)="registrar()" novalidate>
+      <mat-form-field>
+        <mat-label>Nombre completo</mat-label>
+        <input matInput formControlName="nombre" maxlength="100" autocomplete="name" />
+        <mat-error>
+          @if (formulario.controls.nombre.hasError('required')) {
+            El nombre es obligatorio
+          } @else {
+            Máximo 100 caracteres
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" maxlength="100" autocomplete="email" />
+        <mat-error>
+          @if (formulario.controls.correo.hasError('required')) {
+            El correo es obligatorio
+          } @else if (formulario.controls.correo.hasError('email')) {
+            El formato del correo no es válido
+          } @else {
+            Máximo 100 caracteres
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="tel" formControlName="telefono" maxlength="20" autocomplete="tel" />
+        <mat-error>
+          @if (formulario.controls.telefono.hasError('required')) {
+            El teléfono es obligatorio
+          } @else {
+            Máximo 20 caracteres
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <!-- subscriptSizing="dynamic": el espacio del mensaje crece si ocupa dos líneas (no se monta sobre la siguiente casilla) -->
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="contrasena" autocomplete="new-password" />
+        <mat-hint>Mínimo 8 caracteres, con una mayúscula, una minúscula y un número</mat-hint>
+        <mat-error>
+          @if (formulario.controls.contrasena.hasError('required')) {
+            La contraseña es obligatoria
+          } @else {
+            Mínimo 8 caracteres, con una mayúscula, una minúscula y un número
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirmar contraseña</mat-label>
+        <input matInput type="password" formControlName="confirmarContrasena" autocomplete="new-password" />
+        <mat-error>Confirma la contraseña</mat-error>
+      </mat-form-field>
+      <!-- Este error es del formulario completo (no de una casilla), por eso va fuera del mat-form-field -->
+      @if (contrasenasDistintas()) {
+        <p class="error-grupo">Las contraseñas no coinciden</p>
+      }
+
+      <app-mensaje-error [mensaje]="error()" />
+
+      <button mat-flat-button type="submit" [disabled]="cargando()">
+        @if (cargando()) {
+          Creando cuenta...
+        } @else {
+          Crear cuenta
+        }
+      </button>
+    </form>
+
+    <p class="pie">¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </mat-card-content>
+</mat-card>

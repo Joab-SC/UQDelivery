@@ -502,8 +502,8 @@ no editar el mismo archivo a la vez.
   `.subtitulo-pagina`, y los estados de envío `.chip-estado` + `.estado-<ESTADO>`.
 - Dependencias entre carpetas: `features` usa `core` y `shared`; `shared` no usa `features`; una feature no
   importa archivos de otra.
-- Mientras HU-01 no termine el login real, la página de login tiene botones de desarrollo
-  "Entrar como ADMIN / EMISOR / REPARTIDOR" que simulan la sesión.
+- La página de login llama al back real (`POST /api/auth/login`): para entrar al front, el back tiene que estar
+  encendido. Los botones de desarrollo "Entrar como..." de HU-00 ya no existen.
 
 ### 5.4 Rutas
 
