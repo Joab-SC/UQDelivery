@@ -1,0 +1,42 @@
+<section class="pagina-angosta">
+  <mat-card appearance="outlined" class="tarjeta">
+    <mat-card-content>
+      <mat-icon class="icono-exito">check_circle</mat-icon>
+      <h1 class="titulo-pagina">¡Envío creado!</h1>
+      <p class="subtitulo-pagina">Comparte este código con el destinatario para que consulte su paquete.</p>
+
+      <div class="codigo">
+        <span>{{ codigo() }}</span>
+        <button mat-icon-button type="button" (click)="copiarCodigo()" aria-label="Copiar código">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+
+      @if (envio; as e) {
+        <dl class="detalle">
+          <dt>Estado</dt>
+          <dd><span class="chip-estado" [class]="'estado-' + e.estado">{{ e.estado }}</span></dd>
+          <dt>Origen</dt>
+          <dd>{{ e.direccionOrigen }} · {{ e.ciudadOrigen }}</dd>
+          <dt>Destino</dt>
+          <dd>{{ e.direccionDestino }} · {{ e.ciudadDestino }}</dd>
+          <dt>Destinatario</dt>
+          <dd>{{ e.nombreDestinatario }} · {{ e.telefonoDestinatario }}</dd>
+          <dt>Costo</dt>
+          <dd class="costo">{{ costoTexto() }}</dd>
+        </dl>
+      }
+    </mat-card-content>
+
+    <mat-card-actions class="acciones">
+      <a mat-button routerLink="/app/inicio">
+        <mat-icon>home</mat-icon>
+        Ir al inicio
+      </a>
+      <a mat-flat-button routerLink="/app/envios/nuevo">
+        <mat-icon>add</mat-icon>
+        Crear otro envío
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</section>

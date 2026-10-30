@@ -1,0 +1,53 @@
+.tarjeta {
+  text-align: center;
+  padding: 24px 8px 8px;
+}
+
+.icono-exito {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+  color: var(--mat-sys-primary);
+}
+
+.codigo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 24px 0 8px;
+  padding: 8px 8px 8px 20px;
+  border-radius: 12px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  font: var(--mat-sys-headline-small);
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.detalle {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  margin: 24px auto 0;
+  max-width: 480px;
+  text-align: left;
+}
+
+.detalle dt {
+  font: var(--mat-sys-label-large);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.detalle dd {
+  margin: 0;
+  font: var(--mat-sys-body-medium);
+}
+
+.costo {
+  font-weight: 600;
+}
+
+.acciones {
+  justify-content: center;
+  gap: 8px;
+}
