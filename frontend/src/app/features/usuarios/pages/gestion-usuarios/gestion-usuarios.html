@@ -1,0 +1,69 @@
+<section class="pagina">
+  <header class="encabezado-pagina">
+    <h1 class="titulo-pagina">Usuarios</h1>
+    <p class="subtitulo-pagina">Consulta los usuarios y asigna su rol para controlar a qué funciones pueden acceder.</p>
+  </header>
+
+  @if (cargando()) {
+    <app-cargando texto="Cargando usuarios..." />
+  }
+  <app-mensaje-error [mensaje]="error()" />
+
+  @if (!cargando() && !error()) {
+    <div class="contenedor-tabla">
+      <table mat-table [dataSource]="usuarios()" class="tabla-usuarios">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let usuario">{{ usuario.nombre }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef>Correo</th>
+          <td mat-cell *matCellDef="let usuario">{{ usuario.correo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let usuario">{{ usuario.telefono }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaRegistro">
+          <th mat-header-cell *matHeaderCellDef>Registro</th>
+          <td mat-cell *matCellDef="let usuario">{{ usuario.fechaRegistro | date: 'dd/MM/yyyy' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rol">
+          <th mat-header-cell *matHeaderCellDef>Rol</th>
+          <td mat-cell *matCellDef="let usuario">
+            <mat-select
+              class="selector-rol"
+              [value]="usuario.rol"
+              [disabled]="esUsuarioActual(usuario) || guardandoId() === usuario.id"
+              (selectionChange)="cambiarRol(usuario, $event)"
+              [attr.aria-label]="'Rol de ' + usuario.nombre"
+            >
+              @for (rol of roles; track rol) {
+                <mat-option [value]="rol">{{ rol }}</mat-option>
+              }
+            </mat-select>
+            @if (esUsuarioActual(usuario)) {
+              <span class="nota-propio">(tú)</span>
+            }
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let fila; columns: columnas"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell sin-datos" [attr.colspan]="columnas.length">No hay usuarios registrados.</td>
+        </tr>
+      </table>
+    </div>
+
+    <button mat-button (click)="cargarUsuarios()" [disabled]="cargando()">
+      <mat-icon>refresh</mat-icon>
+      Actualizar lista
+    </button>
+  }
+</section>
