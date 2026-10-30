@@ -179,7 +179,9 @@ export class NuevoEnvio implements OnInit {
     this.enviosService.crear(this.armarRequest()).subscribe({
       next: (envio) => {
         this.creando.set(false);
-        this.router.navigate(['/app/envios/creado', envio.codigoSeguimiento], { state: { envio } });
+        this.router.navigate(['/app/envios/creado', envio.codigoSeguimiento], {
+          state: { envio, ciudades: this.ciudades() },
+        });
       },
       error: (err) => {
         this.errorCrear.set(err.error?.message ?? 'No se pudo crear el envío');

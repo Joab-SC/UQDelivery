@@ -17,9 +17,9 @@
           <dt>Estado</dt>
           <dd><span class="chip-estado" [class]="'estado-' + e.estado">{{ e.estado }}</span></dd>
           <dt>Origen</dt>
-          <dd>{{ e.direccionOrigen }} · {{ e.ciudadOrigen }}</dd>
+          <dd>{{ e.direccionOrigen }} · {{ nombreCiudad(e.ciudadOrigen) }}</dd>
           <dt>Destino</dt>
-          <dd>{{ e.direccionDestino }} · {{ e.ciudadDestino }}</dd>
+          <dd>{{ e.direccionDestino }} · {{ nombreCiudad(e.ciudadDestino) }}</dd>
           <dt>Destinatario</dt>
           <dd>{{ e.nombreDestinatario }} · {{ e.telefonoDestinatario }}</dd>
           <dt>Costo</dt>
