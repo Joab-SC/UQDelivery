@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth/auth.guard';
+import { roleGuard } from './core/auth/role.guard';
 import { PrivateLayout } from './core/layout/private-layout/private-layout';
 import { PublicLayout } from './core/layout/public-layout/public-layout';
 
@@ -28,7 +29,11 @@ export const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'inicio' },
       { path: 'inicio', loadChildren: () => import('./features/inicio/inicio.routes').then((m) => m.INICIO_ROUTES) },
       // HU-02: { path: 'usuarios', canActivate: [roleGuard('ADMIN')], loadChildren: ... }
-      // HU-04: { path: 'envios', canActivate: [roleGuard('EMISOR')], loadChildren: ... }
+      {
+        path: 'envios',
+        canActivate: [roleGuard('EMISOR')],
+        loadChildren: () => import('./features/envios/envios.routes').then((m) => m.ENVIOS_ROUTES),
+      },
     ],
   },
 

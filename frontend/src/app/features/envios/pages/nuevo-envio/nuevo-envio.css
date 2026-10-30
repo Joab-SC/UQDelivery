@@ -1,0 +1,69 @@
+/* Formulario a la izquierda y cotización a la derecha; en celular, una columna. */
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.columna-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.columna-resumen {
+  position: sticky;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  padding-top: 16px;
+}
+
+.ancho-completo {
+  grid-column: 1 / -1;
+}
+
+.icono-tarjeta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.boton-confirmar {
+  width: 100%;
+  height: 48px;
+}
+
+.nota {
+  margin: 0;
+  font: var(--mat-sys-body-small);
+  color: var(--mat-sys-on-surface-variant);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .columna-resumen {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .campos {
+    grid-template-columns: 1fr;
+  }
+}

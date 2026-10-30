@@ -1,0 +1,147 @@
+<section class="pagina">
+  <header class="encabezado-pagina">
+    <h1 class="titulo-pagina">Nuevo envío</h1>
+    <p class="subtitulo-pagina">Registra el origen, el destino y los datos del paquete. Cotiza y confirma la solicitud.</p>
+  </header>
+
+  @if (cargandoDatos()) {
+    <app-cargando texto="Cargando ciudades y políticas..." />
+  } @else if (errorDatos()) {
+    <app-mensaje-error [mensaje]="errorDatos()" />
+    <button mat-button type="button" (click)="cargarDatos()">
+      <mat-icon>refresh</mat-icon>
+      Reintentar
+    </button>
+  } @else {
+    <form class="contenido" [formGroup]="formulario" (ngSubmit)="confirmar()" novalidate>
+      <div class="columna-formulario">
+        <!-- Origen -->
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-icon matCardAvatar class="icono-tarjeta">trip_origin</mat-icon>
+            <mat-card-title>Origen</mat-card-title>
+            <mat-card-subtitle>Dónde recogemos el paquete</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="campos">
+            <mat-form-field class="ancho-completo">
+              <mat-label>Dirección de recogida</mat-label>
+              <input matInput formControlName="direccionOrigen" maxlength="200" placeholder="Carrera 14 # 20-35" />
+              <mat-error>{{ mensajeError('direccionOrigen') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Ciudad de origen</mat-label>
+              <mat-select formControlName="ciudadOrigen">
+                @for (ciudad of ciudades(); track ciudad.codigo) {
+                  <mat-option [value]="ciudad.codigo">{{ ciudad.nombre }}</mat-option>
+                }
+              </mat-select>
+              <mat-error>{{ mensajeError('ciudadOrigen') }}</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Destino -->
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-icon matCardAvatar class="icono-tarjeta">location_on</mat-icon>
+            <mat-card-title>Destino</mat-card-title>
+            <mat-card-subtitle>Dónde y a quién entregamos</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="campos">
+            <mat-form-field class="ancho-completo">
+              <mat-label>Dirección de entrega</mat-label>
+              <input matInput formControlName="direccionDestino" maxlength="200" placeholder="Calle 19 # 8-40" />
+              <mat-error>{{ mensajeError('direccionDestino') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Ciudad de destino</mat-label>
+              <mat-select formControlName="ciudadDestino">
+                @for (ciudad of ciudades(); track ciudad.codigo) {
+                  <mat-option [value]="ciudad.codigo">{{ ciudad.nombre }}</mat-option>
+                }
+              </mat-select>
+              <mat-error>{{ mensajeError('ciudadDestino') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Nombre del destinatario</mat-label>
+              <input matInput formControlName="nombreDestinatario" maxlength="100" />
+              <mat-error>{{ mensajeError('nombreDestinatario') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Teléfono del destinatario</mat-label>
+              <input matInput formControlName="telefonoDestinatario" inputmode="numeric" maxlength="15" />
+              <mat-error>{{ mensajeError('telefonoDestinatario') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Correo del destinatario (opcional)</mat-label>
+              <input matInput type="email" formControlName="correoDestinatario" maxlength="150" />
+              <mat-error>{{ mensajeError('correoDestinatario') }}</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Paquete -->
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-icon matCardAvatar class="icono-tarjeta">inventory_2</mat-icon>
+            <mat-card-title>Paquete</mat-card-title>
+            <mat-card-subtitle>
+              Máximo {{ politicas()?.pesoMaximoKg }} kg y {{ politicas()?.medidaMaximaCm }} cm por lado
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="campos">
+            <mat-form-field class="ancho-completo">
+              <mat-label>Descripción del contenido</mat-label>
+              <textarea matInput formControlName="descripcion" rows="2" maxlength="500"></textarea>
+              <mat-hint align="end">{{ formulario.controls.descripcion.value.length }} / 500</mat-hint>
+              <mat-error>{{ mensajeError('descripcion') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Peso</mat-label>
+              <input matInput type="number" formControlName="pesoKg" step="0.1" />
+              <span matTextSuffix>kg</span>
+              <mat-error>{{ mensajeError('pesoKg') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Largo</mat-label>
+              <input matInput type="number" formControlName="largoCm" step="1" />
+              <span matTextSuffix>cm</span>
+              <mat-error>{{ mensajeError('largoCm') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Ancho</mat-label>
+              <input matInput type="number" formControlName="anchoCm" step="1" />
+              <span matTextSuffix>cm</span>
+              <mat-error>{{ mensajeError('anchoCm') }}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Alto</mat-label>
+              <input matInput type="number" formControlName="altoCm" step="1" />
+              <span matTextSuffix>cm</span>
+              <mat-error>{{ mensajeError('altoCm') }}</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <aside class="columna-resumen">
+        <!-- Componente de HU-05: solo muestra; la página llama al servicio -->
+        <app-resumen-cotizacion
+          [cotizacion]="cotizacion()"
+          [cargando]="cotizando()"
+          [error]="errorCotizacion()"
+          [deshabilitado]="datosCotizacionInvalidos()"
+          (cotizar)="cotizar()"
+        />
+
+        <app-mensaje-error [mensaje]="errorCrear()" />
+
+        <button mat-flat-button type="submit" class="boton-confirmar" [disabled]="creando()">
+          <mat-icon>send</mat-icon>
+          {{ creando() ? 'Creando envío...' : 'Confirmar envío' }}
+        </button>
+        <p class="nota">El costo final lo calcula el sistema al confirmar.</p>
+      </aside>
+    </form>
+  }
+</section>
