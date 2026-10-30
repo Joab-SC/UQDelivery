@@ -1,46 +1,63 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../../core/auth/auth.service';
-import { Rol } from '../../../../core/models/rol';
-import { UsuarioResponse } from '../../../../core/models/usuario.models';
+import { MensajeError } from '../../../../shared/components/mensaje-error/mensaje-error';
+import { AuthApiService } from '../../services/auth-api.service';
 
 /**
- * Login TEMPORAL de HU-00.
- * Mientras HU-01 no termine el login real, estos botones simulan una sesión para poder probar
- * las pantallas de cada rol. El token es falso: el back lo rechaza en las rutas protegidas.
- * HU-01 reemplaza esta página por el formulario real y borra los botones de desarrollo.
+ * Inicio de sesión (HU-01).
+ * Flujo: llenar correo y contraseña → «Ingresar» → el back responde { token, usuario }
+ * → se guarda la sesión → se va a /app/inicio. Si falla, se muestra el mensaje del back.
  */
 @Component({
-  imports: [MatCardModule, MatButtonModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MensajeError],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',
 })
 export class Login {
+  private readonly fb = inject(FormBuilder);
+  private readonly authApi = inject(AuthApiService);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
 
-  protected readonly roles: Rol[] = ['ADMIN', 'EMISOR', 'REPARTIDOR'];
+  // Pizarras que lee el HTML
+  protected readonly cargando = signal(false);
+  protected readonly error = signal<string | null>(null);
 
-  protected readonly opciones: { rol: Rol; icono: string }[] = [
-    { rol: 'ADMIN', icono: 'admin_panel_settings' },
-    { rol: 'EMISOR', icono: 'outbox' },
-    { rol: 'REPARTIDOR', icono: 'two_wheeler' },
-  ];
+  // El formulario: dos casillas con las mismas reglas que LoginRequest del back
+  protected readonly formulario = this.fb.nonNullable.group({
+    correo: ['', [Validators.required, Validators.email]],
+    contrasena: ['', [Validators.required]],
+  });
 
-  entrarComo(rol: Rol): void {
-    const usuario: UsuarioResponse = {
-      id: this.roles.indexOf(rol) + 1,
-      nombre: `Usuario ${rol.toLowerCase()}`,
-      correo: `${rol.toLowerCase()}@uqdelivery.co`,
-      telefono: '3000000000',
-      rol,
-      fechaRegistro: new Date().toISOString(),
-    };
-    this.auth.iniciarSesion({ token: `token-de-desarrollo-${rol.toLowerCase()}`, usuario });
-    this.router.navigate(['/app/inicio']);
+  ingresar(): void {
+    // Si falta algo, se pintan en rojo los campos y no se llama al back
+    if (this.formulario.invalid) {
+      this.formulario.markAllAsTouched();
+      return;
+    }
+
+    this.cargando.set(true);
+    this.error.set(null);
+
+    const datos = this.formulario.getRawValue();
+
+    this.authApi.login({ correo: datos.correo.trim(), contrasena: datos.contrasena }).subscribe({
+      next: (respuesta) => {
+        this.auth.iniciarSesion(respuesta);
+        this.cargando.set(false);
+        this.router.navigate(['/app/inicio']);
+      },
+      error: (err) => {
+        this.error.set(err.error?.message ?? 'No se pudo iniciar sesión');
+        this.cargando.set(false);
+      },
+    });
   }
 }
