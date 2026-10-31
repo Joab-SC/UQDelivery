@@ -31,7 +31,7 @@ class CorreoServiceTest {
 
     @Test
     void conBrevoConfiguradoEnviaElCorreoConRemitenteDestinatarioYAsunto() throws Exception {
-        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "usuario@brevo");
+        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "usuario@brevo", false);
         MimeMessage mensaje = mensajeVacio();
         when(mailSender.createMimeMessage()).thenReturn(mensaje);
 
@@ -45,8 +45,8 @@ class CorreoServiceTest {
     }
 
     @Test
-    void sinCredencialesNoIntentaEnviarYSoloLoMuestraEnConsola() {
-        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "");
+    void enModoConsolaSinCredencialesNoIntentaEnviarYDevuelveTrue() {
+        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "", true);
 
         boolean enviado = correoService.enviar("ana@correo.co", "Asunto", "<p>Hola</p>");
 
@@ -55,8 +55,19 @@ class CorreoServiceTest {
     }
 
     @Test
+    void sinCredencialesYSinModoConsolaNoEnviaYDevuelveFalse() {
+        // Caso producción con MAIL_USER olvidado: no se envía, no se escribe el contenido en el log y se avisa con false
+        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "", false);
+
+        boolean enviado = correoService.enviar("ana@correo.co", "Asunto", "<p>Hola</p>");
+
+        assertThat(enviado).isFalse();
+        verifyNoInteractions(mailSender);
+    }
+
+    @Test
     void siBrevoFallaNoLanzaExcepcionYDevuelveFalse() {
-        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "usuario@brevo");
+        CorreoService correoService = new CorreoService(mailSender, "no-reply@uqdelivery.co", "usuario@brevo", false);
         when(mailSender.createMimeMessage()).thenReturn(mensajeVacio());
         doThrow(new MailSendException("SMTP caído")).when(mailSender).send(any(MimeMessage.class));
 

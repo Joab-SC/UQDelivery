@@ -52,3 +52,6 @@ app:
   frontend-url: ${FRONTEND_URL:http://localhost:4200}
   mail:
     from: ${MAIL_FROM:no-reply@uqdelivery.co}
+    # true SOLO en local: si MAIL_USER está vacío, el correo se escribe en la consola en vez de enviarse.
+    # En producción debe quedar en false (el valor por defecto) para que ningún enlace termine en los logs.
+    modo-consola: ${MAIL_MODO_CONSOLA:false}
