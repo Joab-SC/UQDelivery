@@ -67,6 +67,14 @@ public class Usuario {
         this.contrasenaHash = nuevoHash;
     }
 
+    /** Asigna un nuevo rol al usuario. */
+    public void cambiarRol(Rol nuevoRol) {
+        if (nuevoRol == null) {
+            throw new IllegalArgumentException("El rol es obligatorio");
+        }
+        this.rol = nuevoRol;
+    }
+
     @PrePersist
     void alCrear() {
         this.fechaRegistro = LocalDateTime.now();

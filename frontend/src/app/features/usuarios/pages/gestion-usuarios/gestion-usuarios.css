@@ -1,0 +1,28 @@
+/* El ancho y el título salen de las clases globales .pagina y .titulo-pagina (styles.css) */
+
+.contenedor-tabla {
+  overflow-x: auto;
+  margin-bottom: 16px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+}
+
+.tabla-usuarios {
+  width: 100%;
+}
+
+.selector-rol {
+  min-width: 140px;
+}
+
+.nota-propio {
+  margin-left: 8px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.85rem;
+}
+
+.sin-datos {
+  padding: 24px;
+  text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+}
