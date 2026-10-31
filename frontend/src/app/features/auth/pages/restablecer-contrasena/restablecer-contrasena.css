@@ -1,0 +1,68 @@
+.tarjeta {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+}
+
+/* Casillas una debajo de otra */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.formulario button {
+  margin-top: 8px;
+}
+
+/* Error de "las contraseñas no coinciden", con el mismo aspecto que un mat-error */
+.error-grupo {
+  margin: -4px 16px 8px;
+  font: var(--mat-sys-body-small);
+  color: var(--mat-sys-error);
+}
+
+.pie {
+  margin: 16px 0 0;
+  text-align: center;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.pie a {
+  color: var(--mat-sys-primary);
+}
+
+/* Aviso de "enlace incompleto", centrado */
+.aviso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.icono-aviso {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+  color: var(--mat-sys-error);
+}
+
+.titulo-aviso {
+  margin: 12px 0 8px;
+  font: var(--mat-sys-headline-small);
+  color: var(--mat-sys-on-surface);
+}
+
+.nota {
+  margin: 0 0 24px;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.boton-ancho {
+  width: 100%;
+  margin-bottom: 8px;
+}

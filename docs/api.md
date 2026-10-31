@@ -174,6 +174,91 @@ datos del usuario. **Público.**
 
 ---
 
+### HU-03 · `POST /api/auth/recuperar`
+
+Pide un enlace para cambiar la contraseña. Si el correo tiene cuenta, invalida los enlaces anteriores del
+usuario, crea uno nuevo (UUID) que **vence en 30 minutos y sirve una sola vez**, y lo envía por correo. El
+enlace apunta al front: `${FRONTEND_URL}/restablecer?token=...`. **Público.**
+
+**Responde exactamente lo mismo exista o no el correo**, para no revelar qué correos tienen cuenta:
+
+- **Mismo mensaje.** Si el correo no se puede enviar, también responde 200 (el error queda en el log del back,
+  sin el enlace).
+- **Mismo tiempo de respuesta.** El correo no se envía dentro de la petición: el service publica el evento
+  `EnlaceRecuperacionCreado` y `NotificadorRecuperacion` lo envía en segundo plano (`@Async`) cuando la
+  transacción termina. Así no se puede adivinar si el correo existe midiendo cuánto tarda la respuesta.
+- **Límite de frecuencia.** Si el usuario pidió un enlace hace menos de 1 minuto, no se crea otro ni se envía
+  correo (evita llenar de correos a alguien o gastar la cuota de Brevo). La respuesta es la misma.
+
+**Modo consola (solo local):** si `MAIL_USER` está vacío y `MAIL_MODO_CONSOLA=true` en el `.env`, el correo
+no se envía: su contenido (con el enlace) se escribe en la consola del back para probar sin cuenta de Brevo.
+En el despliegue `MAIL_MODO_CONSOLA` no se pone (por defecto es `false`): si faltara `MAIL_USER`, solo se
+registra un error sin el contenido, para que ningún token termine en los logs.
+
+**Request** (`RecuperarRequest`)
+
+```json
+{ "correo": "juan@correo.co" }
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| correo | string | Obligatorio, correo válido, máx. 100 caracteres (no distingue mayúsculas) |
+
+**Response 200** (`MensajeResponse`)
+
+```json
+{ "mensaje": "Si el correo está registrado, te enviamos un enlace para restablecer tu contraseña" }
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Correo vacío o mal escrito | "Hay campos inválidos" + `errors` por campo |
+
+---
+
+### HU-03 · `POST /api/auth/restablecer`
+
+Cambia la contraseña con el `token` del enlace. El enlace queda usado y ya no sirve otra vez (la fila del token se bloquea
+mientras se usa, así dos peticiones simultáneas no pueden usarlo dos veces). No inicia
+sesión: después hay que entrar con la contraseña nueva. **Público.**
+
+**Request** (`RestablecerRequest`)
+
+```json
+{
+  "token": "3f6c1a52-8a0e-4d0b-9a7e-2b1f0c9d4e11",
+  "contrasena": "NuevaClave2026",
+  "confirmarContrasena": "NuevaClave2026"
+}
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| token | string | Obligatorio, máx. 36 caracteres (llega en la URL del correo) |
+| contrasena | string | Obligatorio, entre 8 y 72 caracteres, al menos una mayúscula, una minúscula y un número (misma regla que el registro). Además, máximo 72 **bytes** en UTF-8, el límite de BCrypt (las tildes y la ñ ocupan 2) |
+| confirmarContrasena | string | Obligatorio, igual a `contrasena` |
+
+**Response 200** (`MensajeResponse`)
+
+```json
+{ "mensaje": "Tu contraseña se cambió correctamente. Ya puedes iniciar sesión" }
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Campos vacíos o contraseña insegura | "Hay campos inválidos" + `errors` por campo |
+| 400 | La contraseña y su confirmación no coinciden | "Las contraseñas no coinciden" |
+| 400 | El token no existe | "El enlace de recuperación no es válido. Solicita uno nuevo" |
+| 400 | El enlace venció (30 minutos) o ya se usó | "El enlace de recuperación expiró o ya fue usado. Solicita uno nuevo" |
+| 400 | La contraseña pasa de 72 bytes (por tildes o ñ) | "La contraseña es demasiado larga. Usa máximo 72 caracteres (las tildes y la ñ cuentan doble)" |
+
+---
+
 ### HU-05 · `POST /api/envios/cotizacion`
 
 Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:** EMISOR.
