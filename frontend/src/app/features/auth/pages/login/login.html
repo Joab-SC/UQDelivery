@@ -24,6 +24,9 @@
         <mat-error>La contraseña es obligatoria</mat-error>
       </mat-form-field>
 
+      <!-- HU-03: enlace a la recuperación de contraseña -->
+      <a class="olvido" routerLink="/recuperar">¿Olvidaste tu contraseña?</a>
+
       <app-mensaje-error [mensaje]="error()" />
 
       <button mat-flat-button type="submit" [disabled]="cargando()">

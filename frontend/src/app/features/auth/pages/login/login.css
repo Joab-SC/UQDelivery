@@ -16,6 +16,19 @@
   margin-top: 8px;
 }
 
+/* HU-03: enlace "¿Olvidaste tu contraseña?", alineado a la derecha debajo de la contraseña */
+.olvido {
+  align-self: flex-end;
+  margin: -4px 0 4px;
+  font: var(--mat-sys-label-large);
+  color: var(--mat-sys-primary);
+  text-decoration: none;
+}
+
+.olvido:hover {
+  text-decoration: underline;
+}
+
 .pie {
   margin: 16px 0 0;
   text-align: center;
