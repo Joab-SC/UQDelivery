@@ -174,6 +174,80 @@ datos del usuario. **Público.**
 
 ---
 
+### HU-03 · `POST /api/auth/recuperar`
+
+Pide un enlace para cambiar la contraseña. Si el correo tiene cuenta, invalida los enlaces anteriores del
+usuario, crea uno nuevo (UUID) que **vence en 30 minutos y sirve una sola vez**, y lo envía por correo. El
+enlace apunta al front: `${FRONTEND_URL}/restablecer?token=...`. **Público.**
+
+**Responde exactamente lo mismo exista o no el correo**, para no revelar qué correos tienen cuenta. Si el
+correo no se puede enviar, también responde 200 (el error queda en el log del back).
+
+En local, si `MAIL_USER` está vacío en el `.env`, el correo no se envía: su contenido (con el enlace) se
+escribe en la consola del back para poder probar el flujo sin cuenta de Brevo.
+
+**Request** (`RecuperarRequest`)
+
+```json
+{ "correo": "juan@correo.co" }
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| correo | string | Obligatorio, correo válido, máx. 100 caracteres (no distingue mayúsculas) |
+
+**Response 200** (`MensajeResponse`)
+
+```json
+{ "mensaje": "Si el correo está registrado, te enviamos un enlace para restablecer tu contraseña" }
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Correo vacío o mal escrito | "Hay campos inválidos" + `errors` por campo |
+
+---
+
+### HU-03 · `POST /api/auth/restablecer`
+
+Cambia la contraseña con el `token` del enlace. El enlace queda usado y ya no sirve otra vez. No inicia
+sesión: después hay que entrar con la contraseña nueva. **Público.**
+
+**Request** (`RestablecerRequest`)
+
+```json
+{
+  "token": "3f6c1a52-8a0e-4d0b-9a7e-2b1f0c9d4e11",
+  "contrasena": "NuevaClave2026",
+  "confirmarContrasena": "NuevaClave2026"
+}
+```
+
+| Campo | Tipo | Reglas |
+|---|---|---|
+| token | string | Obligatorio, máx. 36 caracteres (llega en la URL del correo) |
+| contrasena | string | Obligatorio, entre 8 y 72 caracteres, al menos una mayúscula, una minúscula y un número (misma regla que el registro; 72 es el límite de BCrypt) |
+| confirmarContrasena | string | Obligatorio, igual a `contrasena` |
+
+**Response 200** (`MensajeResponse`)
+
+```json
+{ "mensaje": "Tu contraseña se cambió correctamente. Ya puedes iniciar sesión" }
+```
+
+**Errores**
+
+| Código | Cuándo | message |
+|---|---|---|
+| 400 | Campos vacíos o contraseña insegura | "Hay campos inválidos" + `errors` por campo |
+| 400 | La contraseña y su confirmación no coinciden | "Las contraseñas no coinciden" |
+| 400 | El token no existe | "El enlace de recuperación no es válido. Solicita uno nuevo" |
+| 400 | El enlace venció (30 minutos) o ya se usó | "El enlace de recuperación expiró o ya fue usado. Solicita uno nuevo" |
+
+---
+
 ### HU-05 · `POST /api/envios/cotizacion`
 
 Calcula el costo y la distancia estimada de un envío sin guardar nada. **Rol:** EMISOR.
