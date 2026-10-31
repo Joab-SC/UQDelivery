@@ -1,0 +1,60 @@
+<mat-card class="tarjeta" appearance="outlined">
+  @if (confirmacion()) {
+    <!-- Ya se envió la solicitud: aviso de "revisa tu correo" -->
+    <mat-card-content class="aviso">
+      <mat-icon class="icono-aviso">mark_email_read</mat-icon>
+      <h2 class="titulo-aviso">Revisa tu correo</h2>
+      <p class="texto-aviso">{{ confirmacion() }}.</p>
+      <p class="nota">
+        El enlace vence en 30 minutos y solo sirve una vez. Si no lo ves, busca en la carpeta de
+        spam.
+      </p>
+
+      <a mat-flat-button routerLink="/login" class="boton-ancho">Volver a iniciar sesión</a>
+      <button mat-button type="button" class="boton-ancho" (click)="volverAIntentar()">
+        No me llegó, enviar otra vez
+      </button>
+    </mat-card-content>
+  } @else {
+    <mat-card-header>
+      <mat-card-title>Recuperar contraseña</mat-card-title>
+      <mat-card-subtitle>Te enviaremos un enlace para crear una contraseña nueva</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="formulario" [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+        <mat-form-field>
+          <mat-label>Correo de tu cuenta</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="correo"
+            maxlength="100"
+            autocomplete="email"
+          />
+          <mat-error>
+            @if (formulario.controls.correo.hasError('required')) {
+              El correo es obligatorio
+            } @else if (formulario.controls.correo.hasError('email')) {
+              El formato del correo no es válido
+            } @else {
+              Máximo 100 caracteres
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <app-mensaje-error [mensaje]="error()" />
+
+        <button mat-flat-button type="submit" [disabled]="cargando()">
+          @if (cargando()) {
+            Enviando...
+          } @else {
+            Enviar enlace
+          }
+        </button>
+      </form>
+
+      <p class="pie">¿Ya la recordaste? <a routerLink="/login">Inicia sesión</a></p>
+    </mat-card-content>
+  }
+</mat-card>

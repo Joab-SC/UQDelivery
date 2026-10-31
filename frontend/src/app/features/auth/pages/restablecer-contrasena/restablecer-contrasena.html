@@ -1,0 +1,70 @@
+<mat-card class="tarjeta" appearance="outlined">
+  @if (!token()) {
+    <!-- Se entró a /restablecer sin ?token=... (enlace incompleto o copiado mal) -->
+    <mat-card-content class="aviso">
+      <mat-icon class="icono-aviso">link_off</mat-icon>
+      <h2 class="titulo-aviso">Enlace incompleto</h2>
+      <p class="nota">Abre el enlace completo que te llegó al correo o solicita uno nuevo.</p>
+      <a mat-flat-button routerLink="/recuperar" class="boton-ancho">Solicitar un enlace nuevo</a>
+      <a mat-button routerLink="/login" class="boton-ancho">Volver a iniciar sesión</a>
+    </mat-card-content>
+  } @else {
+    <mat-card-header>
+      <mat-card-title>Crear contraseña nueva</mat-card-title>
+      <mat-card-subtitle>Escríbela dos veces para confirmarla</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="formulario" [formGroup]="formulario" (ngSubmit)="cambiar()" novalidate>
+        <!-- subscriptSizing="dynamic": el espacio del mensaje crece si ocupa dos líneas -->
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-label>Contraseña nueva</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="contrasena"
+            maxlength="72"
+            autocomplete="new-password"
+          />
+          <mat-hint>Mínimo 8 caracteres, con una mayúscula, una minúscula y un número</mat-hint>
+          <mat-error>
+            @if (formulario.controls.contrasena.hasError('required')) {
+              La contraseña es obligatoria
+            } @else if (formulario.controls.contrasena.hasError('maxlength')) {
+              Máximo 72 caracteres
+            } @else {
+              Mínimo 8 caracteres, con una mayúscula, una minúscula y un número
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Confirmar contraseña nueva</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmarContrasena"
+            autocomplete="new-password"
+          />
+          <mat-error>Confirma la contraseña</mat-error>
+        </mat-form-field>
+        <!-- Este error es del formulario completo (no de una casilla), por eso va fuera del mat-form-field -->
+        @if (contrasenasDistintas()) {
+          <p class="error-grupo">Las contraseñas no coinciden</p>
+        }
+
+        <app-mensaje-error [mensaje]="error()" />
+
+        <button mat-flat-button type="submit" [disabled]="cargando()">
+          @if (cargando()) {
+            Guardando...
+          } @else {
+            Cambiar contraseña
+          }
+        </button>
+      </form>
+
+      <p class="pie">¿El enlace venció? <a routerLink="/recuperar">Solicita uno nuevo</a></p>
+    </mat-card-content>
+  }
+</mat-card>
