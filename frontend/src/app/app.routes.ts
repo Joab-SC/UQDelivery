@@ -28,7 +28,11 @@ export const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'inicio' },
       { path: 'inicio', loadChildren: () => import('./features/inicio/inicio.routes').then((m) => m.INICIO_ROUTES) },
-      // HU-02: { path: 'usuarios', canActivate: [roleGuard('ADMIN')], loadChildren: ... }
+      {
+        path: 'usuarios',
+        canActivate: [roleGuard('ADMIN')],
+        loadChildren: () => import('./features/usuarios/usuarios.routes').then((m) => m.USUARIOS_ROUTES),
+      },
       {
         path: 'envios',
         canActivate: [roleGuard('EMISOR')],
