@@ -56,6 +56,17 @@ public class Usuario {
         this.notificacionesActivas = true;
     }
 
+    /**
+     * HU-03: reemplaza la contraseña. Recibe el hash ya calculado (BCrypt) por el service:
+     * la entidad nunca ve la contraseña en texto plano.
+     */
+    public void cambiarContrasena(String nuevoHash) {
+        if (nuevoHash == null || nuevoHash.isBlank()) {
+            throw new IllegalArgumentException("El hash de la contraseña no puede estar vacío");
+        }
+        this.contrasenaHash = nuevoHash;
+    }
+
     @PrePersist
     void alCrear() {
         this.fechaRegistro = LocalDateTime.now();

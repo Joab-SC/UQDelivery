@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 /**
  * Enlace de recuperación de contraseña (HU-03). Vence a los 30 minutos y se usa una sola vez.
  */
+
 @Entity
 @Table(name = "tokens_recuperacion")
 @Getter
@@ -41,6 +42,19 @@ public class TokenRecuperacion {
         this.token = token;
         this.fechaExpiracion = fechaExpiracion;
         this.usado = false;
+    }
+
+    /**
+     * HU-03: el enlace sirve solo si no se ha usado y todavía no llega su hora de vencimiento.
+     * Recibe "ahora" como parámetro para poder probarlo con cualquier hora.
+     */
+    public boolean estaVigente(LocalDateTime ahora) {
+        return !usado && ahora.isBefore(fechaExpiracion);
+    }
+
+    /** HU-03: el enlace es de un solo uso; después de cambiar la contraseña queda inservible. */
+    public void marcarUsado() {
+        this.usado = true;
     }
 
     @PrePersist
