@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.1.1'
 	id 'io.spring.dependency-management' version '1.1.7'
+	// Cobertura de pruebas: mide qué líneas ejecutan las pruebas (viene con Gradle, no es una librería externa)
+	id 'jacoco'
 }
 
 group = 'co.edu.uniquindio'
@@ -48,4 +50,33 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	// Al terminar las pruebas se genera el reporte de cobertura
+	finalizedBy 'jacocoTestReport'
+}
+
+// Reporte HTML: backend/build/reports/jacoco/test/html/index.html
+tasks.named('jacocoTestReport') {
+	dependsOn 'test'
+	reports {
+		html.required = true
+		xml.required = true
+	}
+}
+
+// Regla del proyecto: mínimo 60 % de líneas cubiertas en todo el back.
+// Si no se cumple, ./gradlew check falla.
+tasks.named('jacocoTestCoverageVerification') {
+	dependsOn 'test'
+	violationRules {
+		rule {
+			limit {
+				counter = 'LINE'
+				minimum = 0.60
+			}
+		}
+	}
+}
+
+tasks.named('check') {
+	dependsOn 'jacocoTestCoverageVerification'
 }
