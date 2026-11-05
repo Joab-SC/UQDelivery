@@ -1,8 +1,13 @@
 -- ============================================================
 -- UQDelivery · datos de prueba
 --
--- Se ejecuta cada vez que arranca el back, justo después de crear las tablas
--- (ddl-auto: create-drop), así que la base siempre empieza con estos datos.
+-- Se ejecuta cada vez que arranca el back, justo después de crear las tablas.
+-- En local (create-drop) la base siempre empieza con estos datos.
+-- En el despliegue (update) la base conserva lo que se haya guardado y este archivo se vuelve a
+-- ejecutar en cada arranque: por eso CADA INSERT termina en ON CONFLICT (...) DO NOTHING,
+-- que solo inserta la fila si todavía no existe. Quien agregue datos aquí debe hacer lo mismo,
+-- usando una columna única (correo, código de seguimiento, id fijo...); si no, el back no arranca
+-- en el despliegue o duplica los datos.
 --
 -- Todos los usuarios tienen la contraseña: Clave123*
 -- (abajo va su hash BCrypt, porque la base nunca guarda contraseñas en texto plano).
@@ -18,13 +23,15 @@ INSERT INTO usuarios (nombre, correo, contrasena_hash, telefono, rol, activo, no
   ('Administrador',        'admin@uqdelivery.co',       '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000001', 'ADMIN',      true, true, NOW() - INTERVAL '30 days'),
   ('Emisor de prueba',     'emisor@uqdelivery.co',      '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000002', 'EMISOR',     true, true, NOW() - INTERVAL '20 days'),
   ('Repartidor de prueba', 'repartidor@uqdelivery.co',  '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3000000003', 'REPARTIDOR', true, true, NOW() - INTERVAL '20 days'),
-  ('Carlos Ruiz',          'carlos@uqdelivery.co',      '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3209876543', 'REPARTIDOR', true, true, NOW() - INTERVAL '10 days');
+  ('Carlos Ruiz',          'carlos@uqdelivery.co',      '$2a$10$bjWByssX9MCdchecx7yJj.k9F1dIrxG/Kk2COpDK.rh42adwCUbu6', '3209876543', 'REPARTIDOR', true, true, NOW() - INTERVAL '10 days')
+ON CONFLICT (correo) DO NOTHING;
 
 -- ------------------------------------------------------------
 -- Configuración de tarifas (una sola fila, id = 1)
 -- ------------------------------------------------------------
 INSERT INTO configuracion_tarifa (id, tarifa_base, precio_por_km, precio_por_kg, factor_ruta, distancia_minima_km, peso_maximo_kg, medida_maxima_cm, actualizado_por_id, fecha_actualizacion) VALUES
-  (1, 5000, 200, 1000, 1.4, 5, 50, 150, NULL, NOW());
+  (1, 5000, 200, 1000, 1.4, 5, 50, 150, NULL, NOW())
+ON CONFLICT (id) DO NOTHING;
 
 -- ------------------------------------------------------------
 -- Envíos (uno en cada estado)
@@ -73,4 +80,5 @@ INSERT INTO envios (codigo_seguimiento, emisor_id, repartidor_id,
    'Carrera 19 # 10N-15', 'ARMENIA', 'Avenida Santander # 60-15', 'MANIZALES',
    'Pedro Castaño', '3185556677', 'pedro.castano@correo.co', 'Monitor de 24 pulgadas',
    15, 70, 50, 20, 87.07, 37400, 'CANCELADO',
-   NOW() - INTERVAL '3 days', NULL, NOW() - INTERVAL '3 days');
+   NOW() - INTERVAL '3 days', NULL, NOW() - INTERVAL '3 days')
+ON CONFLICT (codigo_seguimiento) DO NOTHING;
