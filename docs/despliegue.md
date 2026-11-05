@@ -5,8 +5,8 @@ La app desplegada son tres piezas, igual que en local, cada una en un servicio g
 | Pieza | En local | Desplegada | URL |
 |---|---|---|---|
 | Base de datos | PostgreSQL en Docker | **Neon** | (solo la usa el back) |
-| Back (Spring) | `gradlew bootRun` | **Render** | `https://uqdelivery-api.onrender.com` |
-| Front (Angular) | `ng serve` | **Vercel** | `https://uqdelivery.vercel.app` |
+| Back (Spring) | `gradlew bootRun` | **Render** | `https://uqdelivery-api-v9zx.onrender.com` |
+| Front (Angular) | `ng serve` | **Vercel** | `https://uq-delivery.vercel.app` |
 
 El front le pide datos al back y el back lee y escribe en la base, igual que en local. Solo cambian las
 direcciones: en vez de `localhost`, cada pieza usa la URL de internet de la otra.
@@ -67,7 +67,7 @@ Lo que está en el repo y prepara el despliegue:
 
 1. Entrar a <https://render.com> con GitHub → **New → Web Service** → elegir el repo.
 2. Configurar:
-   - **Name:** `uqdelivery-api` (da la URL `uqdelivery-api.onrender.com`)
+   - **Name:** `uqdelivery-api` (Render agrega un sufijo si el nombre está ocupado: quedó `uqdelivery-api-v9zx.onrender.com`)
    - **Branch:** `main`
    - **Region:** Ohio (la misma zona que Neon)
    - **Root Directory:** `backend`
@@ -83,19 +83,19 @@ Lo que está en el repo y prepara el despliegue:
    | `POSTGRES_PASSWORD` | Contraseña de Neon |
    | `DDL_AUTO` | `update` |
    | `JWT_SECRET` | Texto aleatorio largo (64+ caracteres). Render lo genera con *Generate* |
-   | `CORS_ORIGINS` | `https://uqdelivery.vercel.app` |
-   | `FRONTEND_URL` | `https://uqdelivery.vercel.app` |
+   | `CORS_ORIGINS` | `https://uq-delivery.vercel.app` |
+   | `FRONTEND_URL` | `https://uq-delivery.vercel.app` |
    | `MAIL_USER`, `MAIL_PASSWORD`, `MAIL_FROM` | De Brevo, cuando exista la cuenta |
 
    `PORT` no se pone: Render la asigna sola. `MAIL_MODO_CONSOLA` **nunca** se pone en Render.
 4. **Create Web Service**. La primera vez tarda varios minutos (descarga Gradle y corre las pruebas).
-5. Comprobar: `https://uqdelivery-api.onrender.com/api/health` responde y
-   `https://uqdelivery-api.onrender.com/swagger-ui.html` abre.
+5. Comprobar: `https://uqdelivery-api-v9zx.onrender.com/api/health` responde y
+   `https://uqdelivery-api-v9zx.onrender.com/swagger-ui.html` abre.
 
 ### 3. Front en Vercel
 
 1. Entrar a <https://vercel.com> con GitHub → **Add New → Project** → importar el repo.
-2. **Project Name:** `uqdelivery` (da la URL `uqdelivery.vercel.app`).
+2. **Project Name:** `uqdelivery` (Vercel puede cambiar el nombre si está ocupado: quedó `uq-delivery.vercel.app`).
 3. **Root Directory:** `frontend`. Lo demás lo toma de `vercel.json`.
 4. **Deploy**. Al terminar, abrir la URL, entrar con `emisor@uqdelivery.co` y recargar la página estando en
    una ruta interna (no debe dar 404).

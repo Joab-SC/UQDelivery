@@ -2,5 +2,5 @@
 // `ng build` (configuración "production" en angular.json). Debe tener las mismas propiedades.
 export const environment = {
   production: true,
-  apiUrl: 'https://uqdelivery-api.onrender.com/api',
+  apiUrl: 'https://uqdelivery-api-v9zx.onrender.com/api',
 };

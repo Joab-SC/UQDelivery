@@ -621,8 +621,8 @@ Paso a paso para crearlo (y las variables de Render) en `docs/despliegue.md`.
 | Pieza | Dónde | URL |
 |---|---|---|
 | Base de datos | Neon (gratis, no caduca) | — |
-| Back | Render, servicio Docker gratis (`backend/Dockerfile`) | `https://uqdelivery-api.onrender.com` |
-| Front | Vercel (`frontend/vercel.json`) | `https://uqdelivery.vercel.app` |
+| Back | Render, servicio Docker gratis (`backend/Dockerfile`) | `https://uqdelivery-api-v9zx.onrender.com` |
+| Front | Vercel (`frontend/vercel.json`) | `https://uq-delivery.vercel.app` |
 
 - **Cada merge a `main` se despliega solo.** Render y Vercel vigilan `main`. Si la compilación o las pruebas
   fallan (el `Dockerfile` corre `gradlew test`), o el back no responde en `/api/health`, queda funcionando la
