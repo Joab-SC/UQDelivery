@@ -1,0 +1,7 @@
+# Lo que Docker no debe copiar al armar la imagen (se genera adentro o no hace falta)
+build/
+.gradle/
+.idea/
+*.iml
+out/
+HELP.md

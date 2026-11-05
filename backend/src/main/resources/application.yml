@@ -6,18 +6,21 @@ spring:
   config:
     import: optional:file:../.env[.properties]
 
+  # En local no se pone DB_URL: se arma con el PostgreSQL de Docker.
+  # En el despliegue DB_URL apunta a Neon (jdbc:postgresql://<host>/<base>?sslmode=require).
   datasource:
-    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:uqdelivery}
+    url: ${DB_URL:jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:uqdelivery}}
     username: ${POSTGRES_USER:postgres}
     password: ${POSTGRES_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
-  # Cada vez que arranca el back la base se crea desde cero:
-  # create-drop crea las tablas a partir de las entidades (y las borra al apagar),
-  # y luego se ejecuta src/main/resources/data.sql con los datos de prueba.
+  # En local (DDL_AUTO sin poner = create-drop) la base se crea desde cero en cada arranque:
+  # crea las tablas a partir de las entidades (y las borra al apagar) y luego ejecuta data.sql.
+  # En el despliegue DDL_AUTO=update: las tablas y los datos se conservan; solo se agregan
+  # las tablas y columnas nuevas. data.sql se ejecuta igual, pero no duplica nada (ON CONFLICT).
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: ${DDL_AUTO:create-drop}
     defer-datasource-initialization: true
     open-in-view: false
     show-sql: true
@@ -38,6 +41,10 @@ spring:
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
+
+# Render asigna el puerto con la variable PORT; en local es 8080.
+server:
+  port: ${PORT:8080}
 
 springdoc:
   swagger-ui:
