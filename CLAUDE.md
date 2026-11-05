@@ -101,6 +101,7 @@ uqdelivery/
     ├── arquitectura.md        ← cómo funciona el back y el front, explicado para el equipo
     ├── guia-historias.md      ← qué archivos crea y toca cada historia, y cómo no pisarse
     ├── api.md                 ← contrato de endpoints (complementa Swagger)
+    ├── despliegue.md          ← cómo está desplegada la app y cómo crear el despliegue paso a paso
     └── modelo-datos/          ← diagrama entidad-relación (PNG + Mermaid) y su generador
 ```
 
@@ -384,9 +385,11 @@ Todas las respuestas de error tienen la misma forma (`ApiError`):
 - **Datos de prueba en `data.sql`**: `admin@uqdelivery.co` (ADMIN), `emisor@uqdelivery.co` (EMISOR),
   `repartidor@uqdelivery.co` (REPARTIDOR) y `carlos@uqdelivery.co` (REPARTIDOR), todos con la contraseña `Clave123*` (en el archivo va su hash BCrypt); la fila de
   `configuracion_tarifa` (base 5000, 200/km, 1000/kg, factor 1.4, mínimo 5 km, máx. 50 kg y 150 cm) y un
-  envío en cada estado. Quien agregue datos de prueba los agrega a `data.sql`.
-- **Antes de desplegar** hay que cambiar esto: el repo es público y `Clave123*` está escrita aquí, así que
-  cualquiera podría entrar como admin a la app desplegada.
+  envío en cada estado. Quien agregue datos de prueba los agrega a `data.sql`, **cada `INSERT` con
+  `ON CONFLICT (columna_unica) DO NOTHING`** (ver 4.10: en el despliegue `data.sql` se ejecuta en cada arranque).
+- **En la app desplegada** la contraseña del admin se cambia directamente en la base (Neon) después del
+  primer despliegue, porque el repo es público y `Clave123*` está escrita aquí. Emisor y repartidores de
+  prueba conservan `Clave123*` para que cualquiera pueda probar.
 - **Inyección SQL:** solo métodos de repository o `@Query` con parámetros. Nunca concatenar texto en consultas.
 - **XSS:** longitudes máximas en los DTOs; en Angular nunca `innerHTML` con datos del usuario.
 
@@ -395,17 +398,23 @@ Todas las respuestas de error tienen la misma forma (`ApiError`):
 Un solo archivo, **sin perfiles** (reemplaza el `application.properties` que generó Initializr).
 Las variables viven en **un solo `.env` en la raíz** (copia de `.env.example`), que leen `docker-compose.yml`
 y Spring (`spring.config.import: optional:file:../.env[.properties]`). En `application.yml` cada valor es
-`${VARIABLE:valor_local}`. Por ahora la configuración es solo para local; lo del despliegue se agrega
-cuando se despliegue.
+`${VARIABLE:valor_local}`: en local no hace falta poner las variables del despliegue, y en Render se ponen
+en su panel (sección 7).
 Variables: `POSTGRES_PORT`, `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`,
 `JWT_SECRET`, `JWT_EXP` (120 min), `CORS_ORIGINS`, `FRONTEND_URL`, `MAIL_HOST` (smtp-relay.brevo.com),
-`MAIL_PORT` (2525), `MAIL_USER`, `MAIL_PASSWORD` (clave SMTP de Brevo, no API key), `MAIL_FROM`.
-`open-in-view: false`. **Nunca** subir credenciales reales.
+`MAIL_PORT` (2525), `MAIL_USER`, `MAIL_PASSWORD` (clave SMTP de Brevo, no API key), `MAIL_FROM`,
+`MAIL_MODO_CONSOLA` (solo local). Solo del despliegue: `DB_URL` (URL JDBC de Neon), `DDL_AUTO` (`update`)
+y `PORT` (lo pone Render). `open-in-view: false`. **Nunca** subir credenciales reales.
 
-**Base de datos desde cero en cada arranque:** `ddl-auto: create-drop` crea las tablas a partir de las
-entidades al arrancar (y las borra al apagar); luego Spring ejecuta `data.sql`
-(`defer-datasource-initialization: true`, `sql.init.mode: always`). Lo que se guarde mientras la app corre
-se pierde al reiniciarla. Si una historia cambia una entidad, revisa que `data.sql` siga funcionando.
+**Base de datos:** `ddl-auto` sale de `DDL_AUTO` y luego Spring ejecuta `data.sql`
+(`defer-datasource-initialization: true`, `sql.init.mode: always`).
+- **Local (`create-drop`, el valor por defecto):** la base se crea desde cero en cada arranque con los datos
+  de `data.sql`; lo que se guarde se pierde al reiniciar.
+- **Desplegado (`update`):** las tablas y los datos se conservan. Hibernate solo agrega tablas y columnas
+  nuevas; `data.sql` se vuelve a ejecutar en cada arranque y no duplica nada gracias a `ON CONFLICT`.
+  Si una historia renombra una columna o agrega una obligatoria a una tabla con filas, `update` no basta:
+  se borra el esquema en Neon y el back lo vuelve a crear con los datos de prueba (se pierde lo creado).
+Si una historia cambia una entidad, revisa que `data.sql` siga funcionando en los dos modos.
 
 ### 4.11 Pruebas
 
@@ -490,7 +499,8 @@ no editar el mismo archivo a la vez.
   (`EnvioRequest`, `UsuarioResponse`). `LocalDateTime` llega como `string`; enums como uniones de texto.
 - Las URLs salen de `environment.apiUrl` (`src/environments/environment.ts`). Escribir siempre
   `` `${environment.apiUrl}/usuarios` ``: el interceptor solo agrega el token a las URLs que empiezan así.
-  El `environment.prod.ts` (URL del back desplegado) y su reemplazo en `angular.json` se agregan al desplegar.
+  `ng build` usa `environment.prod.ts` (URL del back desplegado), por el reemplazo de `angular.json`; si se
+  agrega una propiedad a `environment.ts`, se agrega también allí.
 - Patrón de página: signals `cargando`, `error` y el resultado; `.subscribe({ next, error })` mostrando
   `err.error.message` del `ApiError`.
 - Mientras un endpoint no exista, el servicio devuelve datos falsos que cumplen el contrato con
@@ -606,15 +616,26 @@ Una historia está terminada solo si:
 
 ## 7. Despliegue
 
-Todavía no está hecho; esto es lo decidido para cuando se haga.
+Paso a paso para crearlo (y las variables de Render) en `docs/despliegue.md`.
 
-- Back en Render con un `backend/Dockerfile` (multi-etapa, Gradle → JRE 21, aún no creado). Variables de
-  entorno en el panel. Agregar `TZ=America/Bogota`.
-- Front: crear `environment.prod.ts` con la URL del back desplegado y su reemplazo en `angular.json`.
-- Render gratis se suspende sin uso: abrir la app un par de minutos antes de cualquier demo.
-- Front en Vercel o Netlify con regla de reescritura de todas las rutas a `index.html` (si no, recargar en
-  `/app/usuarios` da 404).
-- Correos con Brevo por el puerto 2525.
+| Pieza | Dónde | URL |
+|---|---|---|
+| Base de datos | Neon (gratis, no caduca) | — |
+| Back | Render, servicio Docker gratis (`backend/Dockerfile`) | `https://uqdelivery-api.onrender.com` |
+| Front | Vercel (`frontend/vercel.json`) | `https://uqdelivery.vercel.app` |
+
+- **Cada merge a `main` se despliega solo.** Render y Vercel vigilan `main`. Si la compilación o las pruebas
+  fallan (el `Dockerfile` corre `gradlew test`), o el back no responde en `/api/health`, queda funcionando la
+  versión anterior. Vercel ignora las demás ramas (`ignoreCommand`): no hay vistas previas por PR.
+- La base **conserva los datos** (`DDL_AUTO=update`, ver 4.10).
+- `Dockerfile`: compila con JDK 21, corre con JRE 21, Java limitado al 75 % de los 512 MB de Render y hora
+  de Colombia (`-Duser.timezone=America/Bogota`).
+- `vercel.json`: manda todas las rutas a `index.html` (si no, recargar en `/app/usuarios` da 404).
+- Si cambian las URLs, se cambian `environment.prod.ts` y las variables `CORS_ORIGINS` y `FRONTEND_URL` de Render.
+- Render gratis se duerme tras ~15 min sin uso y tarda 1-2 min en despertar: abrir la app antes de una demo.
+- Las cuentas de Render, Neon y Vercel están a nombre de Joab (dueño del repo).
+- Correos con Brevo por el puerto 2525. Mientras no se configure, la recuperación de contraseña desplegada
+  no envía correos (el resto funciona).
 
 ---
 

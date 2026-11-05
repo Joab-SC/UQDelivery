@@ -92,6 +92,7 @@ cd backend
 | [docs/guia-historias.md](docs/guia-historias.md) | Qué archivos crea y toca cada historia, y cómo no pisarse |
 | [docs/api.md](docs/api.md) | Contrato de cada endpoint (request, response y errores) |
 | [docs/modelo-datos/diagrama-er.md](docs/modelo-datos/diagrama-er.md) | Diagrama entidad-relación (Sprint 1 y completo) |
+| [docs/despliegue.md](docs/despliegue.md) | Cómo está desplegada la app (Neon, Render, Vercel) y cómo crear el despliegue paso a paso |
 
 Los criterios de validación de cada historia están en su tarjeta de Trello.
 
