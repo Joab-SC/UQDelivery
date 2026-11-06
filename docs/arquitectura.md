@@ -95,15 +95,15 @@ Ejemplos en `src/test/java/.../config/` (`GlobalExceptionHandlerTest`, `JwtServi
 
 Si nunca has usado Angular, estas son las piezas que vas a ver:
 
-| Pieza | Qué es | Ejemplo en el proyecto |
-|---|---|---|
-| **Componente** | Un pedazo de pantalla: una clase `.ts` (datos y acciones), un `.html` (lo que se ve) y un `.css` (estilos) | `features/inicio/pages/inicio/` |
-| **Página** | Un componente que ocupa toda una ruta | `inicio`, `login` |
-| **Servicio** | Clase que hace el trabajo que no es de pantalla, como llamar a la API. Se pide con `inject(...)` | `inicio.service.ts` |
-| **Signal** | Una variable que avisa cuando cambia: el HTML que la lee se actualiza solo. Se lee con `()` y se cambia con `.set(...)` | `cargando = signal(false)` |
+| Pieza | Qué es | Ejemplo en el proyecto              |
+|---|---|-------------------------------------|
+| **Componente** | Un pedazo de pantalla: una clase `.ts` (datos y acciones), un `.html` (lo que se ve) y un `.css` (estilos) | `features/usuarios/pages/gestion-usuarios/` |
+| **Página** | Un componente que ocupa toda una ruta | `inicio`, `login`                   |
+| **Servicio** | Clase que hace el trabajo que no es de pantalla, como llamar a la API. Se pide con `inject(...)` | `usuarios.service.ts`               |
+| **Signal** | Una variable que avisa cuando cambia: el HTML que la lee se actualiza solo. Se lee con `()` y se cambia con `.set(...)` | `cargando = signal(false)`          |
 | **Ruta** | Asocia una URL con una página | `app.routes.ts`, `inicio.routes.ts` |
-| **Guard** | Decide si se puede entrar a una ruta | `authGuard`, `roleGuard('ADMIN')` |
-| **Interceptor** | Código que se ejecuta en cada petición HTTP | agregar el token, manejar los 401 |
+| **Guard** | Decide si se puede entrar a una ruta | `authGuard`, `roleGuard('ADMIN')`   |
+| **Interceptor** | Código que se ejecuta en cada petición HTTP | agregar el token, manejar los 401   |
 
 En el HTML:
 - `{{ nombre() }}` muestra un valor.
@@ -122,9 +122,9 @@ src/app/
 │   └── layout/        marco público, marco privado con menú lateral, barra superior, logo
 ├── shared/      ← piezas reutilizables: <app-mensaje-error>, <app-cargando>, validadores
 └── features/    ← una carpeta por funcionalidad, cada una con pages/, components/, services/, models/
-    ├── inicio/        EJEMPLO a copiar
+    ├── inicio/        página de bienvenida
     ├── auth/          HU-01 y HU-03
-    ├── usuarios/      HU-02
+    ├── usuarios/      HU-02 · EJEMPLO a copiar
     └── envios/        HU-04 y HU-05
 ```
 
@@ -133,29 +133,29 @@ Una feature solo usa `core` y `shared`; nunca importa archivos de otra feature.
 ### Cómo viaja una petición
 
 ```
-Página (inicio.ts) → Servicio (inicio.service.ts) → auth.interceptor agrega el token → API
-        ↑                                                                               │
-        └──── next(respuesta) o error(err) ◀── error.interceptor revisa 401 ◀───────────┘
+Página (gestion-usuarios.ts) → Servicio (usuarios.service.ts) → auth.interceptor agrega el token → API
+        ↑                                                                                           │
+        └──── next(respuesta) o error(err) ◀── error.interceptor revisa 401 ◀───────────────────────┘
 ```
 
 Los componentes **nunca** usan `HttpClient`; siempre llaman al servicio de su feature.
 
 ### Patrón de una página
 
-`features/inicio/pages/inicio/inicio.ts` es el ejemplo a copiar:
+`features/usuarios/pages/gestion-usuarios/gestion-usuarios.ts` es el ejemplo a copiar:
 
 ```ts
 protected readonly cargando = signal(false);
 protected readonly error = signal<string | null>(null);
-protected readonly estadoApi = signal<string | null>(null);
+protected readonly usuarios = signal<UsuarioResponse[]>([]);
 
-consultarEstado(): void {
-  this.cargando.set(true);
-  this.error.set(null);
-  this.inicioService.obtenerEstadoApi().subscribe({
-    next: (respuesta) => { this.estadoApi.set(respuesta.estado); this.cargando.set(false); },
-    error: (err) => { this.error.set(err.error?.message); this.cargando.set(false); },
-  });
+cargarUsuarios(): void {
+    this.cargando.set(true);
+    this.error.set(null);
+    this.usuariosService.listar().subscribe({
+        next: (usuarios) => { this.usuarios.set(usuarios); this.cargando.set(false); },
+        error: (err) => { this.error.set(err.error?.message); this.cargando.set(false); },
+    });
 }
 ```
 
@@ -186,7 +186,7 @@ Ejemplo para HU-02 (gestión de usuarios):
    ng g c features/usuarios/pages/gestion-usuarios --skip-tests
    ```
 2. Crear `features/usuarios/models/usuario.models.ts` con las interfaces de los DTO (mismos nombres que en el back).
-3. Crear `features/usuarios/services/usuarios.service.ts` copiando la forma de `inicio.service.ts`.
+3. Crear `features/usuarios/services/usuarios.service.ts` copiando la forma de `cotizacion.service.ts`.
 4. Crear `features/usuarios/usuarios.routes.ts`:
    ```ts
    export const USUARIOS_ROUTES: Routes = [{ path: '', component: GestionUsuarios }];

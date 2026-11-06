@@ -450,7 +450,7 @@ cd backend
   `mat-sidenav`, `MatSnackBar` para mensajes.
 - Crear siempre con el CLI: `ng g c ...`, `ng g s ...`.
 - Nadie del equipo ha usado Angular antes: la documentación del front (`docs/arquitectura.md`) explica
-  cómo funciona y cómo se organiza en lenguaje sencillo, y `features/inicio/` sirve de ejemplo a copiar.
+  cómo funciona y cómo se organiza en lenguaje sencillo, y `features/usuarios/` (gestión de usuarios, HU-02) sirve de ejemplo a copiar.
 
 ### 5.2 Estructura
 
@@ -475,7 +475,7 @@ frontend/src/
     │   ├── components/           ← mensaje-error, cargando
     │   └── validators/           ← contrasenas-iguales (HU-00), contrasena-segura (HU-01)
     └── features/
-        ├── inicio/               ← HU-00: página de bienvenida (ejemplo a copiar)
+        ├── inicio/               ← HU-00: página de bienvenida (solo saludo)
         ├── auth/                 ← auth.routes.ts (HU-01 y HU-03 agregan sus rutas)
         │   ├── pages/            ← login y registro (HU-01) · solicitar-recuperacion y restablecer-contrasena (HU-03)
         │   ├── services/         ← auth-api.service.ts (HU-01) · recuperacion.service.ts (HU-03)

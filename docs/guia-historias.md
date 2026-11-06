@@ -59,7 +59,7 @@ features/<feature>/
 |---|---|
 | `models/xxx.models.ts` | `interface` con **los mismos nombres y campos** que los DTOs del back (`EnvioRequest`, `EnvioResponse`). Fechas como `string`, enums como uniones de texto (`'PENDIENTE' \| 'ASIGNADO'`). Si el modelo ya existe en `core/models/` (como `UsuarioResponse`), se importa de ahí. |
 | `services/xxx.service.ts` | `@Injectable({ providedIn: 'root' })` con `inject(HttpClient)`. Un método por endpoint, que devuelve `Observable<...>`. URLs con `` `${environment.apiUrl}/...` ``. Mientras el endpoint no exista, datos falsos con `of({...}).pipe(delay(800))`. |
-| `pages/xxx/xxx.ts` | Signals `cargando`, `error` y el resultado. Formulario reactivo si hay formulario. Llama al servicio con `.subscribe({ next, error })` y muestra `err.error.message`. Copia la forma de `features/inicio/`. |
+| `pages/xxx/xxx.ts` | Signals `cargando`, `error` y el resultado. Formulario reactivo si hay formulario. Llama al servicio con `.subscribe({ next, error })` y muestra `err.error.message`. Copia la forma de `features/usuarios/`. |
 | `pages/xxx/xxx.html` | Componentes de Angular Material. Envuelto en `<section class="pagina">` (o `pagina-angosta` para formularios) con `encabezado-pagina`, `titulo-pagina` y `subtitulo-pagina`. Usa `<app-cargando>` y `<app-mensaje-error>`. |
 | `pages/xxx/xxx.css` | Solo lo propio de la pantalla (distribución, espacios). **Colores siempre con variables** (`var(--mat-sys-primary)`), nunca a mano. |
 | `xxx.routes.ts` | `export const XXX_ROUTES: Routes = [...]` con las rutas de la feature. |
