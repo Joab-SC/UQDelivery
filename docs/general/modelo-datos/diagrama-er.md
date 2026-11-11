@@ -2,7 +2,7 @@
 
 Diagrama entidad-relación de la base de datos, en notación pata de gallo. Cada tabla muestra clave (PK/FK),
 columna y tipo; las cajas grises son enums (se guardan como texto, no son tablas). Los PNG y el Mermaid se
-generan con `node docs/modelo-datos/generar-diagramas.js` (ver `CLAUDE.md` 4.4).
+generan con `node docs/general/modelo-datos/generar-diagramas.js` (ver `CLAUDE.md` 4.4).
 
 ## Sprint 1
 

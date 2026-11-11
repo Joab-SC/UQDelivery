@@ -24,7 +24,7 @@ Aplicación web de gestión de envíos y entregas de paquetes en entorno urbano.
 ### Requisitos no funcionales del enunciado
 
 - Separación estricta entre front (SPA) y back (API REST).
-- Base de datos relacional justificada con un diagrama del modelo (`docs/modelo-datos/diagrama-er.md`).
+- Base de datos relacional justificada con un diagrama del modelo (`docs/general/modelo-datos/diagrama-er.md`).
 - Git con estrategia de ramas clara (ver sección 6).
 - Cobertura de pruebas unitarias del back entre 60 y 70 %.
 - Validación en cliente y servidor; protección contra inyección SQL y XSS.
@@ -102,7 +102,12 @@ uqdelivery/
     ├── guia-historias.md      ← qué archivos crea y toca cada historia, y cómo no pisarse
     ├── api.md                 ← contrato de endpoints (complementa Swagger)
     ├── despliegue.md          ← cómo está desplegada la app y cómo crear el despliegue paso a paso
-    └── modelo-datos/          ← diagrama entidad-relación (PNG + Mermaid) y su generador
+    └── general/               ← diagramas generales del documento de arquitectura (modelo 4+1)
+        ├── clases/            ← diagrama de clases de dominio (PNG + draw.io)
+        ├── componentes/       ← diagrama de componentes (PNG + draw.io)
+        ├── despliegue/        ← diagrama de despliegue (PNG + draw.io)
+        ├── modelo-datos/      ← diagrama entidad-relación (PNG + Mermaid) y su generador
+        └── paquetes/          ← diagrama de paquetes (PNG + draw.io)
 ```
 
 Los entregables de Scrum (dailies, burndown, retrospectiva, presentación) no van en el repositorio.
@@ -185,11 +190,11 @@ public UsuarioResponse cambiarRol(@PathVariable Long id, @Valid @RequestBody Cam
 
 ### 4.4 Modelo de datos
 
-El modelo completo (todos los sprints) está en `docs/modelo-datos/diagrama-er.md`, como **diagrama
+El modelo completo (todos los sprints) está en `docs/general/modelo-datos/diagrama-er.md`, como **diagrama
 entidad-relación** con notación pata de gallo: tablas con columnas clave (PK/FK) · nombre · tipo de PostgreSQL,
 y líneas de la FK a la PK sin texto. Hay dos versiones, Sprint 1 y completo, cada una como PNG
 (`diagrama-er-sprint-1.png`, `diagrama-er.png`) y como Mermaid editable. Las dos salen de
-`docs/modelo-datos/generar-diagramas.js`: si el modelo cambia, se edita ese archivo, se regeneran los PNG
+`docs/general/modelo-datos/generar-diagramas.js`: si el modelo cambia, se edita ese archivo, se regeneran los PNG
 y se pega el Mermaid nuevo. Tiene **11 entidades** (cada una es una tabla) y **10 enumeraciones**.
 
 **Entidades:**
