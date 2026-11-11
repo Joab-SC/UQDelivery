@@ -1,0 +1,272 @@
+<mxfile host="Electron">
+  <diagram id="hu04clases" name="Página-1">
+    <mxGraphModel dx="1763" dy="1317" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pkg_controllers" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="controllers" vertex="1">
+          <mxGeometry height="175" width="1314" x="20" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_config_exception" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="config.exception" vertex="1">
+          <mxGeometry height="255" width="559" x="1440" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_config_mapper" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="config.mapper" vertex="1">
+          <mxGeometry height="180" width="486" x="20" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_services" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="services" vertex="1">
+          <mxGeometry height="495" width="1913" x="500" y="426" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_config_security" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="config.security" vertex="1">
+          <mxGeometry height="175" width="315" x="20" y="716" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_repositories" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="repositories" vertex="1">
+          <mxGeometry height="160" width="1275" x="500" y="1016" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_domain_datos" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="domain.datos" vertex="1">
+          <mxGeometry height="315" width="354" x="1940" y="1016" as="geometry" />
+        </mxCell>
+        <mxCell id="pkg_domain_model" parent="1" style="shape=folder;fontStyle=1;spacingTop=2;tabWidth=170;tabHeight=24;tabPosition=left;html=1;verticalAlign=top;align=left;spacingLeft=10;fontSize=13;fillColor=#fcfcfc;strokeColor=#888888;" value="domain.model" vertex="1">
+          <mxGeometry height="565" width="1814" x="20" y="1296" as="geometry" />
+        </mxCell>
+        <mxCell id="ciudadCtrl" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«controller»&lt;/i&gt;&lt;br&gt;&lt;b&gt;CiudadController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- envioMapper: EnvioMapper&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ listar(): List&amp;lt;CiudadResponse&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="96" width="235" x="40" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="envioCtrl" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«controller»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EnvioController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- envioService: EnvioService&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- envioMapper: EnvioMapper&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ crear(request: EnvioRequest): EnvioResponse&lt;/p&gt;" vertex="1">
+          <mxGeometry height="111" width="321" x="520" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="confCtrl" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«controller»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ConfiguracionController&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- configuracionService: ConfiguracionService&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- envioMapper: EnvioMapper&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ politicas(): PoliticasResponse&lt;/p&gt;" vertex="1">
+          <mxGeometry height="111" width="314" x="1000" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="gEx" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«controllerAdvice»&lt;/i&gt;&lt;br&gt;&lt;b&gt;GlobalExceptionHandler&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ validacion(ex: MethodArgumentNotValidException): ResponseEntity&amp;lt;ApiError&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ reglaNegocio(ex: ReglaNegocioException): ResponseEntity&amp;lt;ApiError&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="519" x="1460" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="rnEx" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«exception»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ReglaNegocioException&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ ReglaNegocioException(mensaje: String)&lt;/p&gt;" vertex="1">
+          <mxGeometry height="71" width="288" x="1460" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="mapper" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«mapper»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EnvioMapper&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ toDatos(request: EnvioRequest): DatosEnvio&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ toResponse(envio: Envio): EnvioResponse&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ toResponse(ciudad: Ciudad): CiudadResponse&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ toPoliticasResponse(c: ConfiguracionTarifa): PoliticasResponse&lt;/p&gt;" vertex="1">
+          <mxGeometry height="116" width="446" x="40" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="envSrv" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EnvioService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ MAX_INTENTOS_CODIGO: int = 10 {readOnly}&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- envioRepository: EnvioRepository&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- cotizacionService: CotizacionService&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- usuarioAutenticado: UsuarioAutenticado&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- generadorCodigo: GeneradorCodigoSeguimiento&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ crear(datos: DatosEnvio): Envio&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- generarCodigoUnico(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- limpiar(texto: String): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- normalizarCorreo(correo: String): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="201" width="321" x="520" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="confSrv" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ConfiguracionService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- configuracionTarifaRepository: ConfiguracionTarifaRepository&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ obtener(): ConfiguracionTarifa&lt;/p&gt;" vertex="1">
+          <mxGeometry height="96" width="433" x="1960" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="gen" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«component»&lt;/i&gt;&lt;br&gt;&lt;b&gt;GeneradorCodigoSeguimiento&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ PREFIJO: String = &quot;UQD-&quot; {readOnly}&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ CARACTERES: String {readOnly}&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ LONGITUD: int = 8 {readOnly}&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- aleatorio: SecureRandom&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ generar(): String&lt;/p&gt;" vertex="1">
+          <mxGeometry height="141" width="268" x="1000" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="cotSrv" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;CotizacionService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- configuracionTarifaRepository: ConfiguracionTarifaRepository&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ cotizar(origen: Ciudad, destino: Ciudad,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;      pesoKg, largoCm, anchoCm,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;      altoCm: BigDecimal): Cotizacion&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- haversineKm(a: Ciudad, b: Ciudad): double&lt;/p&gt;" vertex="1">
+          <mxGeometry height="141" width="433" x="1460" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="ua" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«component»&lt;/i&gt;&lt;br&gt;&lt;b&gt;UsuarioAutenticado&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- usuarioRepository: UsuarioRepository&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ obtenerCorreo(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ obtener(): Usuario&lt;/p&gt;" vertex="1">
+          <mxGeometry height="111" width="275" x="40" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="envRepo" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EnvioRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;«bind» T = Envio, ID = Long&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ existsByCodigoSeguimiento(codigo: String): boolean&lt;/p&gt;" vertex="1">
+          <mxGeometry height="96" width="367" x="520" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="jpa" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«interface»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&lt;i&gt;JpaRepository&amp;lt;T, ID&amp;gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ save(entidad: T): T&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ findById(id: ID): Optional&amp;lt;T&amp;gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="229" x="1120" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="confRepo" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ConfiguracionTarifaRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;«bind» T = ConfiguracionTarifa, ID = Long&lt;/p&gt;" vertex="1">
+          <mxGeometry height="71" width="295" x="1428" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="datos" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«record»&lt;/i&gt;&lt;br&gt;&lt;b&gt;DatosEnvio&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;direccionOrigen, direccionDestino: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;ciudadOrigen, ciudadDestino: Ciudad&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;nombreDestinatario, telefonoDestinatario,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;correoDestinatario, descripcion: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;pesoKg, largoCm, anchoCm, altoCm: BigDecimal&lt;/p&gt;" vertex="1">
+          <mxGeometry height="131" width="314" x="1960" y="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="cot" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«record»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Cotizacion&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;costo: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;distanciaKm: BigDecimal&lt;/p&gt;" vertex="1">
+          <mxGeometry height="86" width="176" x="1960" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Usuario&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- id: Long&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- nombre: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- correo: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- contrasenaHash: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- telefono: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- rol: Rol&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- activo: boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- notificacionesActivas: boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- fechaRegistro: LocalDateTime&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ cambiarRol(nuevoRol: Rol): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ cambiarContrasena(nuevoHash: String): void&lt;/p&gt;" vertex="1">
+          <mxGeometry height="231" width="314" x="40" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="envio" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Envio&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- id: Long&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- codigoSeguimiento: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- emisor: Usuario&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- repartidor: Usuario&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- direccionOrigen: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- ciudadOrigen: Ciudad&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- direccionDestino: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- ciudadDestino: Ciudad&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- nombreDestinatario: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- telefonoDestinatario: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- correoDestinatario: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- descripcion: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- pesoKg, largoCm, anchoCm, altoCm: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- distanciaKm: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- costo: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- estado: EstadoEnvio = PENDIENTE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- fechaCreacion, fechaEntrega,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;   fechaActualizacion: LocalDateTime&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ Envio(codigoSeguimiento, emisor, direcciones,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;     ciudades, destinatario, descripcion,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;     medidas, distanciaKm, costo)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ alCrear(): void  «PrePersist»&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;~ alActualizar(): void  «PreUpdate»&lt;/p&gt;" vertex="1">
+          <mxGeometry height="411" width="334" x="520" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="estado" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«enumeration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EstadoEnvio&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;PENDIENTE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;ASIGNADO&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;EN_CAMINO&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;ENTREGADO&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;CANCELADO&lt;/p&gt;" vertex="1">
+          <mxGeometry height="131" width="97" x="1000" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="ciudad" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«enumeration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Ciudad&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;ARMENIA&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;PEREIRA&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;MANIZALES&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;CALARCA&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;MONTENEGRO&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- nombre: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- latitud, longitud: double&lt;/p&gt;" vertex="1">
+          <mxGeometry height="161" width="202" x="1000" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="rol" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«enumeration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Rol&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;ADMIN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;EMISOR&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;REPARTIDOR&lt;/p&gt;" vertex="1">
+          <mxGeometry height="101" width="97" x="1000" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="tarifa" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ConfiguracionTarifa&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ ID_UNICO: Long = 1 {readOnly}&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- id: Long&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- tarifaBase, precioPorKm, precioPorKg: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- factorRuta, distanciaMinimaKm: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- pesoMaximoKg, medidaMaximaCm: BigDecimal&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- actualizadoPor: Usuario&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;- fechaActualizacion: LocalDateTime&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;+ admitePaquete(pesoKg, largoCm, anchoCm,&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:6px;&quot;&gt;      altoCm: BigDecimal): boolean&lt;/p&gt;" vertex="1">
+          <mxGeometry height="201" width="354" x="1460" y="1340" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Controlador: recibe el evento del sistema (POST /api/envios) y delega en EnvioService; no tiene lógica de negocio." vertex="1">
+          <mxGeometry height="60" width="360" x="520" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="n1l" edge="1" parent="1" source="n1" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;exitX=0.445;exitY=1.026;exitDx=0;exitDy=0;exitPerimeter=0;" target="envioCtrl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Creador: crea Envio porque tiene los datos para inicializarlo.&lt;br&gt;Bajo acoplamiento: recibe el record DatosEnvio, no el DTO." vertex="1">
+          <mxGeometry height="70" width="360" x="1000" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="n2l" edge="1" parent="1" source="n2" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;entryX=1.002;entryY=0.163;entryDx=0;entryDy=0;entryPerimeter=0;" target="envSrv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Experto en información: calcula distancia y costo.&lt;br&gt;Lanza «throw» ReglaNegocioException si el paquete no cumple." vertex="1">
+          <mxGeometry height="70" width="300" x="1951" y="778" as="geometry" />
+        </mxCell>
+        <mxCell id="n3l" edge="1" parent="1" source="n3" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;" target="cotSrv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Fabricación pura + Alta cohesión: generar códigos no es responsabilidad del dominio." vertex="1">
+          <mxGeometry height="60" width="330" x="1000" y="935" as="geometry" />
+        </mxCell>
+        <mxCell id="n4l" edge="1" parent="1" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;" target="gen">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1138" y="934" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n5" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Experto en información: tiene los límites, por eso decide si admite el paquete." vertex="1">
+          <mxGeometry height="60" width="300" x="1863" y="1407" as="geometry" />
+        </mxCell>
+        <mxCell id="n5l" edge="1" parent="1" source="n5" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;" target="tarifa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fontSize=11;align=left;spacingLeft=6;fillColor=#fff9c4;strokeColor=#c9b400;" value="GRASP Fabricación pura + Alta cohesión: solo convierte entre DTO, record y entidad." vertex="1">
+          <mxGeometry height="55" width="340" x="40" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="n6l" edge="1" parent="1" source="n6" style="dashed=1;endArrow=none;html=1;rounded=0;strokeColor=#999999;entryX=0.385;entryY=0.989;entryDx=0;entryDy=0;entryPerimeter=0;" target="mapper">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r0" edge="1" parent="1" source="ciudadCtrl" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.5;exitY=1;entryX=0.265;entryY=0.02;entryDx=0;entryDy=0;entryPerimeter=0;" target="mapper" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="envioCtrl" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.15;exitY=1;entryX=0.75;entryY=0;" target="mapper" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="568.15" y="304.12" />
+              <mxPoint x="374.5" y="304.12" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="confCtrl" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.3;exitY=1;entryX=0.95;entryY=0;" target="mapper" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1094" y="410" />
+              <mxPoint x="464" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="envioCtrl" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.6;exitY=1;entryX=0.6;entryY=0;" target="envSrv" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="confCtrl" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.75;exitY=1;entryX=0.5;entryY=0;" target="confSrv" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1236" y="380" />
+              <mxPoint x="2176" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="gEx" style="dashed=1;endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.3;exitY=1;entryX=0.545;entryY=-0.024;entryDx=0;entryDy=0;entryPerimeter=0;" target="rnEx" value="«use»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="envSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0;exitY=0.9;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="ua" value="">
+          <mxGeometry relative="1" x="0.0444" as="geometry">
+            <Array as="points">
+              <mxPoint x="464.84" y="650.9" />
+              <mxPoint x="464.84" y="815.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="envSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.8;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="gen" value="">
+          <mxGeometry relative="1" x="-0.0081" as="geometry">
+            <Array as="points">
+              <mxPoint x="1067" y="633.16" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r8" edge="1" parent="1" source="envSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.55;entryX=0.4;entryY=0;" target="cotSrv" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1633" y="581" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r9" edge="1" parent="1" source="envSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.345;exitY=0.996;entryX=0.3;entryY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="envRepo" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r10" edge="1" parent="1" source="confSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.9;exitY=1;entryX=0.85;entryY=0;" target="confRepo" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2350" y="980" />
+              <mxPoint x="1678.75" y="986" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r11" edge="1" parent="1" source="cotSrv" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.229;exitY=0.993;entryX=0.437;entryY=0.028;entryDx=0;entryDy=0;entryPerimeter=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="confRepo" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r12" edge="1" parent="1" source="envRepo" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=1;exitY=0.25;entryX=0;entryY=0.25;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="jpa" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r13" edge="1" parent="1" source="confRepo" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;exitX=0;exitY=0.5;entryX=1.004;entryY=0.407;entryDx=0;entryDy=0;entryPerimeter=0;" target="jpa" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r14" edge="1" parent="1" source="cotSrv" style="dashed=1;endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.75;entryX=0.5;entryY=0;" target="cot" value="«create»">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2048" y="866" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r15" edge="1" parent="1" source="envSrv" style="dashed=1;endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.95;entryX=1;entryY=0.04;" target="envio" value="«create»">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="920" y="661" />
+              <mxPoint x="920" y="1356" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r16" edge="1" parent="1" source="cotSrv" style="dashed=1;endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.75;exitY=1;entryX=0.92;entryY=0;" target="tarifa" value="«use» admitePaquete()">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1785" y="1260" />
+              <mxPoint x="1786" y="1260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r17" edge="1" parent="1" source="envio" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.004;exitY=0.136;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" target="usuario" value="emisor  1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r18" edge="1" parent="1" source="envio" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.001;exitY=0.282;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="usuario" value="repartidor  0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r19" edge="1" parent="1" source="tarifa" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" target="usuario" value="actualizadoPor  0..1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1637" y="1931" />
+              <mxPoint x="197" y="1931" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r20" edge="1" parent="1" source="envio" target="estado" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.159;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="estado  1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r21" edge="1" parent="1" source="envio" target="ciudad" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.580;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" value="ciudadOrigen  1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r22" edge="1" parent="1" source="envio" target="ciudad" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=1;exitY=0.736;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" value="ciudadDestino  1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r23" edge="1" parent="1" source="usuario" target="rol" style="endArrow=open;endFill=0;html=1;rounded=0;fontSize=11;labelBackgroundColor=default;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="rol  1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="291" y="1790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lg" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=top;" value="Línea sólida con flecha abierta = asociación navegable (atributo)&amp;nbsp;&lt;div&gt;línea punteada = dependencia («create», «use»)&amp;nbsp;&lt;/div&gt;&lt;div&gt;flecha con triángulo hueco = generalización&lt;/div&gt;&lt;div&gt;nota punteada = patrón GRASP.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Las dependencias hacia los DTO (EnvioRequest, EnvioResponse, CiudadResponse, PoliticasResponse) se leen en las firmas de los métodos y se omiten para no saturar el diagrama.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="1900" x="20" y="1976" as="geometry" />
+        </mxCell>
+        <mxCell id="oHLuBpXLLoBnjt140zGZ-1" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;HU-04 - Solicitud de envío - Dig.Clases de diseño &lt;/font&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;font style=&quot;&quot;&gt;parcia&lt;/font&gt;l&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="36" width="748" x="20" y="-109" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
