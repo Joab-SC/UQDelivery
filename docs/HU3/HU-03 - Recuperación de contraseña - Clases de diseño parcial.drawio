@@ -1,0 +1,204 @@
+<mxfile host="app.diagrams.net" scale="3" border="0">
+  <diagram id="hu03-clases" name="Clases HU-03">
+    <mxGraphModel dx="2162" dy="1246" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1750" pageHeight="1240" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="k2" parent="1" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;align=left;" value="Diagrama de clases de diseño (parcial) - HU-03 Recuperación de contraseña" vertex="1">
+          <mxGeometry height="30" width="900" x="30" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="k3" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«record · dto»&lt;/i&gt;&lt;br&gt;&lt;b&gt;RecuperarRequest&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="250" x="20" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="k4" parent="k3" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="correo: String" vertex="1">
+          <mxGeometry height="27" width="250" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k5" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«record · dto»&lt;/i&gt;&lt;br&gt;&lt;b&gt;RestablecerRequest&lt;/b&gt;" vertex="1">
+          <mxGeometry height="103" width="250" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="k6" parent="k5" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="token: String&lt;br&gt;contrasena: String&lt;br&gt;confirmarContrasena: String" vertex="1">
+          <mxGeometry height="61" width="250" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k7" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«controller»&lt;/i&gt;&lt;br&gt;&lt;b&gt;RecuperacionController&lt;/b&gt;" vertex="1">
+          <mxGeometry height="155" width="430" x="330" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="k8" parent="k7" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="&amp;nbsp; MENSAJE_SOLICITUD: String&lt;br&gt;&amp;nbsp; MENSAJE_RESTABLECIDA: String&lt;br&gt;- recuperacionService: RecuperacionService" vertex="1">
+          <mxGeometry height="61" width="430" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k9" parent="k7" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="8" width="430" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="k10" parent="k7" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ recuperar(request: RecuperarRequest): MensajeResponse&lt;br&gt;+ restablecer(request: RestablecerRequest): MensajeResponse" vertex="1">
+          <mxGeometry height="44" width="430" y="111" as="geometry" />
+        </mxCell>
+        <mxCell id="k11" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«record · dto»&lt;/i&gt;&lt;br&gt;&lt;b&gt;MensajeResponse&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="220" x="820" y="119" as="geometry" />
+        </mxCell>
+        <mxCell id="k12" parent="k11" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="mensaje: String" vertex="1">
+          <mxGeometry height="27" width="220" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k13" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#f5f5f5;strokeColor=#999999;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«configuration»&lt;/i&gt;&lt;br&gt;&lt;b&gt;AsyncConfig&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="260" x="1140" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="k14" parent="k13" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="@EnableAsync" vertex="1">
+          <mxGeometry height="27" width="260" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k15" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#f5f5f5;strokeColor=#999999;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«interface · Spring»&lt;/i&gt;&lt;br&gt;&lt;b&gt;PasswordEncoder&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="250" x="20" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="k16" parent="k15" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ encode(contrasena: CharSequence): String" vertex="1">
+          <mxGeometry height="27" width="250" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k17" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#f5f5f5;strokeColor=#999999;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«interface · Spring»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ApplicationEventPublisher&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="250" x="20" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="k18" parent="k17" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ publishEvent(evento: Object): void" vertex="1">
+          <mxGeometry height="27" width="250" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k19" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;RecuperacionService&lt;/b&gt;" vertex="1">
+          <mxGeometry height="257" width="430" x="330" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="k20" parent="k19" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="&amp;nbsp; MINUTOS_VIGENCIA: long = 30&lt;br&gt;&amp;nbsp; SEGUNDOS_ENTRE_SOLICITUDES: long = 60&lt;br&gt;&amp;nbsp; MAX_BYTES_CONTRASENA: int = 72&lt;br&gt;&amp;nbsp; MENSAJE_ENLACE_INVALIDO: String&lt;br&gt;&amp;nbsp; MENSAJE_ENLACE_VENCIDO: String&lt;br&gt;&amp;nbsp; MENSAJE_CONTRASENA_LARGA: String&lt;br&gt;- usuarioRepository: UsuarioRepository&lt;br&gt;- tokenRepository: TokenRecuperacionRepository&lt;br&gt;- passwordEncoder: PasswordEncoder&lt;br&gt;- eventos: ApplicationEventPublisher&lt;br&gt;- frontendUrl: String" vertex="1">
+          <mxGeometry height="197" width="430" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k21" parent="k19" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="69" width="430" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="k22" parent="k19" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ solicitar(correo: String): void&lt;br&gt;+ restablecer(token: String, contrasena: String, confirmarContrasena: String): void" vertex="1">
+          <mxGeometry height="44" width="430" y="213" as="geometry" />
+        </mxCell>
+        <mxCell id="k23" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«record · dominio»&lt;/i&gt;&lt;br&gt;&lt;b&gt;EnlaceRecuperacionCreado&lt;/b&gt;" vertex="1">
+          <mxGeometry height="103" width="260" x="830" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="k24" parent="k23" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="correo: String&lt;br&gt;nombre: String&lt;br&gt;enlace: String" vertex="1">
+          <mxGeometry height="61" width="260" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k25" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«component»&lt;/i&gt;&lt;br&gt;&lt;b&gt;NotificadorRecuperacion&lt;/b&gt;" vertex="1">
+          <mxGeometry height="138" width="430" x="820" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="k26" parent="k25" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="&amp;nbsp; ASUNTO: String&lt;br&gt;- correoService: CorreoService" vertex="1">
+          <mxGeometry height="44" width="430" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k27" parent="k25" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="8" width="430" y="86" as="geometry" />
+        </mxCell>
+        <mxCell id="k28" parent="k25" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ alCrearseEnlace(evento: EnlaceRecuperacionCreado): void&lt;br&gt;+ cuerpoCorreo(nombre: String, enlace: String): String" vertex="1">
+          <mxGeometry height="44" width="430" y="94" as="geometry" />
+        </mxCell>
+        <mxCell id="k29" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«service»&lt;/i&gt;&lt;br&gt;&lt;b&gt;CorreoService&lt;/b&gt;" vertex="1">
+          <mxGeometry height="189" width="400" x="1320" y="519" as="geometry" />
+        </mxCell>
+        <mxCell id="k30" parent="k29" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="- mailSender: JavaMailSender&lt;br&gt;- remitente: String&lt;br&gt;- usuarioSmtp: String&lt;br&gt;- modoConsola: boolean" vertex="1">
+          <mxGeometry height="78" width="400" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k31" parent="k29" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#9673a6;" value="" vertex="1">
+          <mxGeometry height="8" width="400" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="k32" parent="k29" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ enviar(destinatario: String, asunto: String, cuerpoHtml: String): boolean&lt;br&gt;+ estaConfigurado(): boolean" vertex="1">
+          <mxGeometry height="61" width="400" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="k33" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#f5f5f5;strokeColor=#999999;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«interface · Spring»&lt;/i&gt;&lt;br&gt;&lt;b&gt;JavaMailSender&lt;/b&gt;" vertex="1">
+          <mxGeometry height="86" width="260" x="1390" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="k34" parent="k33" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ createMimeMessage(): MimeMessage&lt;br&gt;+ send(mensaje: MimeMessage): void" vertex="1">
+          <mxGeometry height="44" width="260" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k35" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;UsuarioRepository&lt;/b&gt;" vertex="1">
+          <mxGeometry height="69" width="300" x="20" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="k36" parent="k35" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ findByCorreo(correo: String): Optional&amp;lt;Usuario&amp;gt;" vertex="1">
+          <mxGeometry height="27" width="300" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k37" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«repository»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TokenRecuperacionRepository&lt;/b&gt;" vertex="1">
+          <mxGeometry height="103" width="500" x="350" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="k38" parent="k37" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ findByToken(token: String): Optional&amp;lt;TokenRecuperacion&amp;gt;&lt;br&gt;+ existsByUsuarioAndFechaCreacionAfter(usuario: Usuario, desde: LocalDateTime): boolean&lt;br&gt;+ invalidarPendientes(usuario: Usuario): int" vertex="1">
+          <mxGeometry height="61" width="500" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k39" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;TokenRecuperacion&lt;/b&gt;" vertex="1">
+          <mxGeometry height="226.5" width="340" x="920" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="k40" parent="k39" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="- id: Long&lt;br&gt;- usuario: Usuario&lt;br&gt;- token: String&lt;br&gt;- fechaExpiracion: LocalDateTime&lt;br&gt;- usado: boolean&lt;br&gt;- fechaCreacion: LocalDateTime" vertex="1">
+          <mxGeometry height="86" width="340" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k41" parent="k39" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="8" width="340" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="k42" parent="k39" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ TokenRecuperacion(usuario: Usuario, token: String,&lt;br&gt;+&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;fechaExpiracion: LocalDateTime)&lt;/span&gt;&lt;div&gt;+ estaVigente(ahora: LocalDateTime): boolean&lt;br&gt;+ marcarUsado(): void&lt;br&gt;+ alCrear(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="119" width="340" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="k43" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=42;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#ffffff;fontSize=12;collapsible=0;" value="&lt;i&gt;«entity»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Usuario&lt;/b&gt;" vertex="1">
+          <mxGeometry height="210" width="250" x="1360" y="908.25" as="geometry" />
+        </mxCell>
+        <mxCell id="k44" parent="k43" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="- id: Long&lt;br&gt;- nombre: String&lt;br&gt;- correo: String&lt;br&gt;- contrasenaHash: String&lt;br&gt;- telefono: String&lt;br&gt;- rol: Rol&lt;br&gt;- activo: boolean&lt;br&gt;- notificacionesActivas: boolean&lt;br&gt;- fechaRegistro: LocalDateTime" vertex="1">
+          <mxGeometry height="138" width="250" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="k45" parent="k43" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="8" width="250" y="172" as="geometry" />
+        </mxCell>
+        <mxCell id="k46" parent="k43" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;fontSize=11;whiteSpace=wrap;" value="+ cambiarContrasena(nuevoHash: String): void" vertex="1">
+          <mxGeometry height="44" width="250" y="179" as="geometry" />
+        </mxCell>
+        <mxCell id="k47" edge="1" parent="1" source="k7" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k48" edge="1" parent="1" source="k7" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k49" edge="1" parent="1" source="k7" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k50" edge="1" parent="1" source="k7" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k11" value="«crea»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k51" edge="1" parent="1" source="k19" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k52" edge="1" parent="1" source="k19" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k53" edge="1" parent="1" source="k19" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k35" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k54" edge="1" parent="1" source="k19" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k37" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k55" edge="1" parent="1" source="k19" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k23" value="«publica»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k56" edge="1" parent="1" source="k25" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k23" value="«escucha»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k57" edge="1" parent="1" source="k25" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k29" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k58" edge="1" parent="1" source="k29" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k33" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k59" edge="1" parent="1" source="k13" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="k25" value="«habilita @Async»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k60" edge="1" parent="1" source="k37" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k39" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k61" edge="1" parent="1" source="k35" style="endArrow=open;endSize=10;dashed=1;html=1;rounded=0;strokeColor=#666666;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=1;edgeStyle=orthogonalEdgeStyle;" target="k43" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="170" y="1160" />
+              <mxPoint x="1485" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k62" edge="1" parent="1" source="k39" style="endArrow=open;endSize=10;html=1;rounded=0;strokeColor=#333333;fontSize=10;fontColor=#333333;labelBackgroundColor=#ffffff;" target="k43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;Excepciones: RecuperacionService lanza ReglaNegocioException (400) si las contraseñas no coinciden, si pasa de 72 bytes, o si el enlace no existe, venció o ya se usó. GlobalExceptionHandler la convierte en ApiError. CorreoService nunca lanza excepción: devuelve false si el correo no se pudo enviar.&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="95" width="280" x="20" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="k64" parent="1" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;fontSize=11;align=left;" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;Azul: capa web (controller, DTO) · Morado: servicios · Verde: dominio y repositorios · Gris: clases de Spring y configuración · Línea continua: asociación · Línea punteada: dependencia.&amp;nbsp;Diagrama parcial: solo lo que usa la HU-03.&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="1600" x="20" y="1190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

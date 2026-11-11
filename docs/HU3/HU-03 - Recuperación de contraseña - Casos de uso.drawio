@@ -1,0 +1,111 @@
+<mxfile host="app.diagrams.net" pages="2" scale="3" border="0">
+  <diagram id="hu03-casos" name="Casos de uso HU-03">
+    <mxGraphModel dx="1994" dy="1150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" parent="1" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;align=left;verticalAlign=middle;" value="&lt;font style=&quot;font-size: 17px;&quot;&gt;Vista de Casos de Uso - HU-03 Recuperación de contraseña&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="225" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="shape=swimlane;swimlane;html=1;fontColor=#000000;startSize=28;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;swimlaneFillColor=#ffffff;" value="Sistema UQDelivery" vertex="1">
+          <mxGeometry height="620" width="640" x="150" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" parent="c3" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" value="No generar enlace&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(correo sin cuenta o pedido hace &amp;lt; 1 min)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="220" x="370" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#000000;fontSize=12;" value="Usuario" vertex="1">
+          <mxGeometry height="60" width="30" x="60" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fontColor=#000000;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" value="Servicio de correo&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(Brevo SMTP)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="30" x="850" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" value="Iniciar sesión&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;(HU-01)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="170" x="190" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="Solicitar recuperación&lt;br&gt;de contraseña" vertex="1">
+          <mxGeometry height="70" width="200" x="175" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" value="Restablecer&lt;br&gt;contraseña" vertex="1">
+          <mxGeometry height="70" width="200" x="175" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Validar correo" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Invalidar enlaces anteriores" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Generar enlace&lt;br&gt;(token de 30 minutos)" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Enviar correo con el enlace" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Validar contraseña segura" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Validar enlace&lt;br&gt;(vigente y sin usar)" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Cambiar contraseña (BCrypt)&lt;br&gt;y marcar enlace como usado" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" parent="1" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" value="Rechazar enlace&lt;br&gt;vencido o usado" vertex="1">
+          <mxGeometry height="50" width="220" x="520" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" edge="1" parent="1" source="c4" style="endArrow=none;html=1;fontColor=#000000;rounded=0;strokeWidth=1.5;" target="c6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" edge="1" parent="1" source="c4" style="endArrow=none;html=1;fontColor=#000000;rounded=0;strokeWidth=1.5;" target="c7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" edge="1" parent="1" source="c4" style="endArrow=none;html=1;fontColor=#000000;rounded=0;strokeWidth=1.5;" target="c8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" edge="1" parent="1" source="c12" style="endArrow=none;html=1;fontColor=#000000;rounded=0;strokeWidth=1.5;" target="c5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" edge="1" parent="1" source="c7" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#b85450;rounded=0;fontColor=#b85450;" target="c6" value="«extend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" edge="1" parent="1" source="c7" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="c9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" edge="1" parent="1" source="c7" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;entryX=0.055;entryY=0.8;entryDx=0;entryDy=0;entryPerimeter=0;" target="c10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c25" edge="1" parent="1" source="c7" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="c11" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c26" edge="1" parent="1" source="c7" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="c12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c27" edge="1" parent="1" source="c13" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#b85450;rounded=0;fontColor=#b85450;" target="c7" value="«extend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" edge="1" parent="1" source="c8" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="c14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" edge="1" parent="1" source="c8" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;" target="c15" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" edge="1" parent="1" source="c8" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#000000;rounded=0;" target="c16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" edge="1" parent="1" source="c17" style="endArrow=open;endSize=10;dashed=1;html=1;fontColor=#000000;fontSize=10;strokeColor=#b85450;rounded=0;fontColor=#b85450;" target="c8" value="«extend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" parent="1" style="text;html=1;fontColor=#000000;strokeColor=none;fillColor=none;whiteSpace=wrap;fontSize=11;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Líneas punteadas negras: «include» (siempre se ejecuta). Rojas: «extend» (solo en ciertos casos: correo sin cuenta, solicitud repetida o enlace vencido/usado). «Solicitar recuperación» extiende «Iniciar sesión» porque se abre desde el enlace «¿Olvidaste tu contraseña?» del login.&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="45" width="640" x="150" y="680" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="5cj5Zw-yWsByH51hKNjf" name="Página-2">
+    <mxGraphModel dx="2054" dy="1184" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
