@@ -103,8 +103,11 @@ uqdelivery/
     ├── api.md                 ← contrato de endpoints (complementa Swagger)
     ├── despliegue.md          ← cómo está desplegada la app y cómo crear el despliegue paso a paso
     └── general/               ← diagramas generales del documento de arquitectura (modelo 4+1)
+        ├── clases/            ← diagrama de clases de dominio (PNG + draw.io)
+        ├── componentes/       ← diagrama de componentes (PNG + draw.io)
         ├── despliegue/        ← diagrama de despliegue (PNG + draw.io)
-        └── modelo-datos/      ← diagrama entidad-relación (PNG + Mermaid) y su generador
+        ├── modelo-datos/      ← diagrama entidad-relación (PNG + Mermaid) y su generador
+        └── paquetes/          ← diagrama de paquetes (PNG + draw.io)
 ```
 
 Los entregables de Scrum (dailies, burndown, retrospectiva, presentación) no van en el repositorio.
