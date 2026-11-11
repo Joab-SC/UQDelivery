@@ -3,8 +3,8 @@
 //   - el código Mermaid de cada uno, que se copia en diagrama-er.md
 //
 // Uso (desde la raíz del repo; necesita Node y Google Chrome o Microsoft Edge, sin instalar nada más):
-//   node docs/modelo-datos/generar-diagramas.js            → actualiza los dos PNG
-//   node docs/modelo-datos/generar-diagramas.js --mermaid  → imprime el Mermaid para pegarlo en diagrama-er.md
+//   node docs/general/modelo-datos/generar-diagramas.js            → actualiza los dos PNG
+//   node docs/general/modelo-datos/generar-diagramas.js --mermaid  → imprime el Mermaid para pegarlo en diagrama-er.md
 //
 // Si cambia el modelo: se edita `tablas`, `enums` y las relaciones de abajo, se generan los PNG y se
 // actualiza el Mermaid de diagrama-er.md.

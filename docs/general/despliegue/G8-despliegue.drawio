@@ -1,0 +1,119 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="g8-despliegue" name="G8 · Despliegue">
+    <mxGraphModel dx="1776" dy="1048" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1020" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="marco" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=340;height=30;verticalAlign=top;align=left;spacingLeft=8;fontSize=14;swimlaneFillColor=none;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="&lt;b&gt;deployment&lt;/b&gt; G8 · Despliegue de UQDelivery" vertex="1">
+          <mxGeometry height="1000" width="1580" x="10" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="pc" parent="1" style="shape=cube;size=16;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=20;spacingRight=16;fillColor=#EEF3F8;strokeColor=#333333;fontSize=12;" value="«device»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;PC o celular del usuario&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{cliente: Admin, Emisor o Repartidor}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="236" width="346" x="50" y="414" as="geometry" />
+        </mxCell>
+        <mxCell id="navegador" parent="pc" style="shape=cube;size=10;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=14;spacingRight=10;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Navegador web&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{Chrome, Edge, Firefox…}&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{ejecuta la SPA Angular descargada}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="120" width="290" x="20" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="vercel" parent="1" style="shape=cube;size=16;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=20;spacingRight=16;fillColor=#EEF3F8;strokeColor=#333333;fontSize=12;" value="«device»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor de Vercel&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{plan = Hobby, red = Edge Network (CDN)}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="276" width="456" x="600" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="webestatico" parent="vercel" style="shape=cube;size=10;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=14;spacingRight=10;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor web estático&lt;/b&gt;" vertex="1">
+          <mxGeometry height="170" width="400" x="20" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="front" parent="webestatico" style="rounded=0;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;spacingTop=4;fillColor=#FFFDF0;strokeColor=#333333;fontSize=12;" value="«artifact»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;frontend (build de Angular 22)&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;dist/frontend/browser&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;index.html · main-*.js · styles-*.css&lt;/i&gt;" vertex="1">
+          <mxGeometry height="90" width="340" x="25" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="front-icono" parent="front" style="shape=note;size=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="19" width="15" x="318" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="render" parent="1" style="shape=cube;size=16;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=20;spacingRight=16;fillColor=#EEF3F8;strokeColor=#333333;fontSize=12;" value="«device»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor de Render&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{plan = Free, RAM = 512 MB, región = Ohio}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="396" width="456" x="600" y="424" as="geometry" />
+        </mxCell>
+        <mxCell id="docker" parent="render" style="shape=cube;size=10;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=14;spacingRight=10;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Contenedor Docker&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{imagen = eclipse-temurin:21-jre}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="285" width="400" x="20" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="jvm" parent="docker" style="shape=cube;size=8;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=12;spacingRight=8;fillColor=#F7F9FB;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;JVM Java 21&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{MaxRAMPercentage = 75 %, zona = America/Bogota}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="178" width="353" x="20" y="87" as="geometry" />
+        </mxCell>
+        <mxCell id="jar" parent="jvm" style="rounded=0;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;spacingTop=4;fillColor=#FFFDF0;strokeColor=#333333;fontSize=12;" value="«artifact»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;app.jar&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;uqdelivery-0.0.1-SNAPSHOT · API REST Spring Boot&lt;/i&gt;" vertex="1">
+          <mxGeometry height="75" width="305" x="20" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="jar-icono" parent="jar" style="shape=note;size=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="19" width="15" x="283" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="neon" parent="1" style="shape=cube;size=16;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=20;spacingRight=16;fillColor=#EEF3F8;strokeColor=#333333;fontSize=12;" value="«device»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor de Neon&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{región = AWS US East (Ohio)}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="266" width="356" x="1220" y="424" as="geometry" />
+        </mxCell>
+        <mxCell id="postgres" parent="neon" style="shape=cube;size=10;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=14;spacingRight=10;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;PostgreSQL 17&lt;/b&gt;" vertex="1">
+          <mxGeometry height="160" width="300" x="20" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="esquema" parent="postgres" style="rounded=0;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;spacingTop=4;fillColor=#FFFDF0;strokeColor=#333333;fontSize=12;" value="«artifact»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Esquema de la BD&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;usuarios · envios ·&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;configuracion_tarifa · tokens_recuperacion&lt;/i&gt;" vertex="1">
+          <mxGeometry height="82" width="255" x="18" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="esquema-icono" parent="esquema" style="shape=note;size=5;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;" value="" vertex="1">
+          <mxGeometry height="19" width="15" x="233" y="7" as="geometry" />
+        </mxCell>
+        <mxCell id="brevo" parent="1" style="shape=cube;size=16;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=20;spacingRight=16;fillColor=#EEF3F8;strokeColor=#333333;fontSize=12;" value="«device»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor de Brevo&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;{host = smtp-relay.brevo.com}&lt;/i&gt;" vertex="1">
+          <mxGeometry height="186" width="356" x="1220" y="764" as="geometry" />
+        </mxCell>
+        <mxCell id="smtp" parent="brevo" style="shape=cube;size=10;direction=south;whiteSpace=wrap;html=1;container=1;collapsible=0;verticalAlign=top;align=center;spacingTop=14;spacingRight=10;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;" value="«executionEnvironment»&lt;br&gt;&lt;b style=&quot;font-size:14px&quot;&gt;Servidor SMTP (relay de correo)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="78" width="300" x="20" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="nota" parent="1" style="shape=note;size=16;whiteSpace=wrap;html=1;fillColor=#FFFBE0;strokeColor=#333333;align=left;verticalAlign=top;spacingLeft=10;spacingTop=6;fontSize=13;" value="Render y Vercel vigilan la rama main de GitHub: cada merge se construye y se publica solo.&lt;br&gt;&lt;br&gt;El navegador nunca se conecta a Neon ni a Brevo: solo el back (app.jar) habla con la base y el correo." vertex="1">
+          <mxGeometry height="120" width="440" x="50" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="ruta1" edge="1" parent="1" source="pc" style="endArrow=none;html=1;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;strokeColor=#333333;strokeWidth=1.5;" target="vercel" value="«HTTPS»&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;descarga la SPA (HTML, JS, CSS)&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ruta1-m-1" connectable="0" parent="ruta1" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="*" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta1-m1" connectable="0" parent="ruta1" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta2" edge="1" parent="1" source="pc" style="endArrow=none;html=1;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;strokeColor=#333333;strokeWidth=1.5;" target="render" value="«HTTPS»&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;API REST · JSON + token JWT&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ruta2-m-1" connectable="0" parent="ruta2" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="*" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta2-m1" connectable="0" parent="ruta2" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta3" edge="1" parent="1" source="render" style="endArrow=none;html=1;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;strokeColor=#333333;strokeWidth=1.5;" target="neon" value="«JDBC»&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;TCP 5432 · SSL&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ruta3-m-1" connectable="0" parent="ruta3" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta3-m1" connectable="0" parent="ruta3" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta4" edge="1" parent="1" source="render" style="endArrow=none;html=1;rounded=0;labelBackgroundColor=#FFFFFF;fontSize=12;strokeColor=#333333;strokeWidth=1.5;" target="brevo" value="«SMTP»&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;puerto 2525 · STARTTLS&lt;/i&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ruta4-m-1" connectable="0" parent="ruta4" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ruta4-m1" connectable="0" parent="ruta4" style="edgeLabel;resizable=0;html=1;fontStyle=1;fontSize=13;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry">
+            <mxPoint x="-10" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
