@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="aI8Q25Gjraq2NZYmOsRQ">
+    <mxGraphModel dx="1314" dy="685" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;" value="Arquitectura de UQDelivery" vertex="1">
+          <mxGeometry height="30" width="600" x="30" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="fe" parent="1" style="swimlane;startSize=26;html=1;fontSize=14;align=left;spacingLeft=10;fillColor=#F7F8FA;strokeColor=#D5DAE1;fontColor=#1B1F24;" value="Frontend · Angular 22 + Angular Material (Vercel)" vertex="1">
+          <mxGeometry height="110" width="720" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fe1" parent="fe" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Páginas y componentes&lt;br&gt;&lt;small&gt;signals, formularios&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="140" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fe2" parent="fe" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Servicios HTTP&lt;br&gt;&lt;small&gt;uno por feature&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="140" x="200" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fe3" parent="fe" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Interceptores&lt;br&gt;&lt;small&gt;token y errores&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="140" x="380" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fe4" parent="fe" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Guards y rutas&lt;br&gt;&lt;small&gt;por rol&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="140" x="560" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fa1" edge="1" parent="fe" source="fe1" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="fe2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fa2" edge="1" parent="fe" source="fe2" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="fe3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="be" parent="1" style="swimlane;startSize=26;html=1;fontSize=14;align=left;spacingLeft=10;fillColor=#F7F8FA;strokeColor=#D5DAE1;fontColor=#1B1F24;" value="Backend · Spring Boot 4, Java 21 (Render, Docker)" vertex="1">
+          <mxGeometry height="260" width="720" x="30" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="sec" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#FFF6E0;strokeColor=#E8C36A;fontColor=#1B1F24;" value="Seguridad · Spring Security + JWT&lt;br&gt;&lt;small&gt;filtro JWT, CORS, @PreAuthorize por rol&lt;/small&gt;" vertex="1">
+          <mxGeometry height="40" width="680" x="20" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Controllers&lt;br&gt;&lt;small&gt;REST + Swagger&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="20" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="svc" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Services&lt;br&gt;&lt;small&gt;lógica de negocio&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="265" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rep" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Repositories&lt;br&gt;&lt;small&gt;Spring Data JPA&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="510" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="map" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Mappers y DTOs&lt;br&gt;&lt;small&gt;records request/response&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="mail" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="CorreoService&lt;br&gt;&lt;small&gt;envío en segundo plano&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="265" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="dom" parent="be" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="Dominio&lt;br&gt;&lt;small&gt;entidades JPA y enums&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="510" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ba1" edge="1" parent="be" source="sec" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;exitX=0.14;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="ctl" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ba2" edge="1" parent="be" source="ctl" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="svc" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ba3" edge="1" parent="be" source="svc" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="rep" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ba4" edge="1" parent="be" source="ctl" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="map" value="usa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ba5" edge="1" parent="be" source="svc" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="mail" value="evento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ba6" edge="1" parent="be" source="rep" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="dom" value="entidades">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="neon" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontSize=14;fillColor=#F3EEFF;strokeColor=#B9A6F0;fontColor=#1B1F24;" value="PostgreSQL&lt;br&gt;&lt;small&gt;Neon&lt;/small&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="790" y="317" as="geometry" />
+        </mxCell>
+        <mxCell id="brevo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#F2F4F7;strokeColor=#B8C0CC;fontColor=#1B1F24;" value="&lt;b&gt;Brevo&lt;/b&gt;&lt;br&gt;&lt;small&gt;correo SMTP&lt;/small&gt;" vertex="1">
+          <mxGeometry height="55" width="190" x="295" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="maps" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#F2F4F7;strokeColor=#B8C0CC;fontColor=#1B1F24;dashed=1;" value="&lt;b&gt;API de mapas&lt;/b&gt;&lt;br&gt;&lt;small&gt;Sprint 3&lt;/small&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="790" y="75" as="geometry" />
+        </mxCell>
+        <mxCell id="x1" edge="1" parent="1" source="fe" style="startArrow=open;startSize=10;endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="sec" value="HTTPS · JSON · JWT">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x2" edge="1" parent="1" source="rep" style="startArrow=open;startSize=10;endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="neon" value="JDBC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x3" edge="1" parent="1" source="mail" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="brevo" value="SMTP 2525">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x4" edge="1" parent="1" source="fe" style="startArrow=open;startSize=10;endArrow=open;endSize=10;dashed=1;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="maps" value="mapas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#5A626E;" value="Amarillo: seguridad · Morado: base de datos · Gris: sistemas externos · Punteado: planeado (Sprint 3)" vertex="1">
+          <mxGeometry height="24" width="700" x="30" y="630" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
