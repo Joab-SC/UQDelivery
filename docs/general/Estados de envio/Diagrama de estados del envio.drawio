@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="y4Y0Jju_x78Kbw5Del4y">
+    <mxGraphModel dx="932" dy="485" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;" value="Diagrama de estados del envío (EstadoEnvio)" vertex="1">
+          <mxGeometry height="30" width="600" x="30" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="ini" parent="1" style="ellipse;fillColor=#000000;strokeColor=none;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="30" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="pen" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="PENDIENTE" vertex="1">
+          <mxGeometry height="50" width="110" x="100" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="asi" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="ASIGNADO" vertex="1">
+          <mxGeometry height="50" width="110" x="305" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="cam" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontSize=14;fillColor=#EEF4FF;strokeColor=#9DB8F2;fontColor=#1B1F24;" value="EN_CAMINO" vertex="1">
+          <mxGeometry height="50" width="110" x="510" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ent" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontSize=14;fillColor=#E7F6EC;strokeColor=#8BCB9F;fontColor=#1B1F24;" value="ENTREGADO" vertex="1">
+          <mxGeometry height="50" width="110" x="715" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="fin1" parent="1" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="885" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="can" parent="1" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fontSize=14;fillColor=#FDECEC;strokeColor=#EBA3A3;fontColor=#1B1F24;" value="CANCELADO" vertex="1">
+          <mxGeometry height="50" width="140" x="187" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="fin2" parent="1" style="ellipse;shape=endState;fillColor=#000000;strokeColor=#000000;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="242" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="ini" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="pen" value="crear">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="pen" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="asi" value="asignar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="asi" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="cam" value="iniciar ruta">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="cam" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="ent" value="entregar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="ent" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="fin1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="pen" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#C9302C;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="can" value="cancelar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="asi" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#C9302C;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="can" value="cancelar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="can" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" target="fin2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="asi" style="edgeStyle=orthogonalEdgeStyle;curved=1;endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="pen" value="rechazo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;fontSize=12;fillColor=#FFF9DB;strokeColor=#E9D58A;fontColor=#1B1F24;align=left;spacingLeft=8;" value="EN_CAMINO y ENTREGADO no se pueden cancelar.&lt;br&gt;Reasignar un repartidor mantiene el estado ASIGNADO." vertex="1">
+          <mxGeometry height="60" width="340" x="480" y="290" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
