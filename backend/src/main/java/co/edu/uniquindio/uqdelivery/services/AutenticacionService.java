@@ -54,7 +54,7 @@ public class AutenticacionService {
     public ResultadoAutenticacion login(String correo, String contrasena) {
         String correoNormalizado = correo.toLowerCase().trim();
 
-        // Autenticar credenciales mediante Spring Security (si falla, lanza BadCredentialsException -> 401)[cite: 1]
+        // Autenticar credenciales mediante Spring Security (si falla, lanza BadCredentialsException -> 401)
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(correoNormalizado, contrasena)
         );
@@ -63,7 +63,7 @@ public class AutenticacionService {
         Usuario usuario = usuarioRepository.findByCorreo(correoNormalizado)
                 .orElseThrow(() -> new ReglaNegocioException("Usuario no encontrado"));
 
-        // Generar el token JWT (vigencia de 2 horas configurada en el sistema)[cite: 1]
+        // Generar el token JWT (vigencia de 2 horas configurada en el sistema)
         String token = jwtService.generarToken(usuario);
 
         return new ResultadoAutenticacion(token, usuario);
