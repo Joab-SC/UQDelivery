@@ -1,5 +1,5 @@
 <mxfile host="app.diagrams.net">
-  <diagram name="Página-1" id="aI8Q25Gjraq2NZYmOsRQ">
+  <diagram name="Página-1" id="vHHMKvuBwhITM1l96dGA">
     <mxGraphModel dx="1314" dy="685" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" adaptiveColors="auto">
       <root>
         <mxCell id="0" />
@@ -76,9 +76,6 @@
         <mxCell id="brevo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#F2F4F7;strokeColor=#B8C0CC;fontColor=#1B1F24;" value="&lt;b&gt;Brevo&lt;/b&gt;&lt;br&gt;&lt;small&gt;correo SMTP&lt;/small&gt;" vertex="1">
           <mxGeometry height="55" width="190" x="295" y="550" as="geometry" />
         </mxCell>
-        <mxCell id="maps" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fillColor=#F2F4F7;strokeColor=#B8C0CC;fontColor=#1B1F24;dashed=1;" value="&lt;b&gt;API de mapas&lt;/b&gt;&lt;br&gt;&lt;small&gt;Sprint 3&lt;/small&gt;" vertex="1">
-          <mxGeometry height="60" width="100" x="790" y="75" as="geometry" />
-        </mxCell>
         <mxCell id="x1" edge="1" parent="1" source="fe" style="startArrow=open;startSize=10;endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="sec" value="HTTPS · JSON · JWT">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -88,10 +85,7 @@
         <mxCell id="x3" edge="1" parent="1" source="mail" style="endArrow=open;endSize=10;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;labelPlacement=auto;" target="brevo" value="SMTP 2525">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x4" edge="1" parent="1" source="fe" style="startArrow=open;startSize=10;endArrow=open;endSize=10;dashed=1;html=1;strokeColor=#8A94A6;fontColor=#5A626E;labelBackgroundColor=default;defaultLabelBackgroundColor=page;verticalAlign=bottom;labelPlacement=auto;" target="maps" value="mapas">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="leg" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#5A626E;" value="Amarillo: seguridad · Morado: base de datos · Gris: sistemas externos · Punteado: planeado (Sprint 3)" vertex="1">
+        <mxCell id="leg" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#5A626E;" value="Amarillo: seguridad · Morado: base de datos · Gris: sistemas externos" vertex="1">
           <mxGeometry height="24" width="700" x="30" y="630" as="geometry" />
         </mxCell>
       </root>
