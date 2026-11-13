@@ -103,6 +103,7 @@ uqdelivery/
     ├── api.md                 ← contrato de endpoints (complementa Swagger)
     ├── despliegue.md          ← cómo está desplegada la app y cómo crear el despliegue paso a paso
     └── general/               ← diagramas generales del documento de arquitectura (modelo 4+1)
+        ├── casos-de-uso/      ← diagrama de casos de uso general del Sprint 1 (PNG + draw.io)
         ├── clases/            ← diagrama de clases de dominio (PNG + draw.io)
         ├── componentes/       ← diagrama de componentes (PNG + draw.io)
         ├── despliegue/        ← diagrama de despliegue (PNG + draw.io)
